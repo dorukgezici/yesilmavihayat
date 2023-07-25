@@ -4,10 +4,11 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-rgb: 127, 193, 198;
+  --background-rgb: rgb(127, 193, 198);
+  --background-light-rgb: 186, 223, 222;
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: rgb(var(--background-rgb));
+  background: rgb(var(--background-light-rgb));
 }
