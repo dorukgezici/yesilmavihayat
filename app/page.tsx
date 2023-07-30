@@ -1,6 +1,6 @@
 import coverImg from '@/public/img/cover.webp'
 import meltemImg from '@/public/img/meltem.jpg'
-import classNames from 'classnames'
+import wavesImg from '@/public/img/waves.jpg'
 import { Charmonman, Gotu } from 'next/font/google'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -12,14 +12,37 @@ const header2Font = Gotu({ weight: "400", subsets: ['latin-ext'] })
 export default function Home() {
   return (
     <main className="flex flex-col min-h-screen items-center justify-between">
-      <section className='bg-[--background-rgb] my-12 mx-1'>
-        <div className="border-4 border-black rounded-lg p-12 text-center">
-          <h1 className={classNames("text-9xl my-12", headerFont.className)}>Yeşil Mavi Hayat</h1>
-          <p className={classNames("text-3xl my-12", header2Font.className)}>MELTEM SOĞUK STROPOLI</p>
+      <section>
+        <div className="carousel">
+          <div className="carousel-item">
+            <Image src={wavesImg} alt="Waves" height={400} />
+          </div>
+          <div className="carousel-item">
+            <Image src={wavesImg} alt="Waves" height={400} />
+          </div>
+          <div className="carousel-item">
+            <Image src={wavesImg} alt="Waves" height={400} />
+          </div>
+          <div className="carousel-item">
+            <Image src={wavesImg} alt="Waves" height={400} />
+          </div>
+          <div className="carousel-item">
+            <Image src={wavesImg} alt="Waves" height={400} />
+          </div>
+          <div className="carousel-item">
+            <Image src={wavesImg} alt="Waves" height={400} />
+          </div>
         </div>
       </section>
 
-      <section className="flex flex-wrap items-center justify-center py-12">
+      {/* <section className='w-11/12 bg-[--background-rgb] rounded-lg my-8 mx-1'>
+        <div className="border border-black rounded-lg shadow-md shadow-black p-12 text-center">
+          <h1 className={classNames("text-6xl md:text-9xl my-12", headerFont.className)}>Yeşil Mavi Hayat</h1>
+          <p className={classNames("text-lg md:text-3xl my-12", header2Font.className)}>MELTEM SOĞUK STROPOLI</p>
+        </div>
+      </section> */}
+
+      <section className="flex flex-wrap items-center justify-center py-8">
         <div className='flex w-auto m-7'>
           <Image src={coverImg} alt='Yeşil Mavi Hayat' width={256} height={403} />
         </div>
