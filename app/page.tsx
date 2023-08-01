@@ -1,7 +1,14 @@
 import coverImg from "@/public/img/cover.webp";
 import img1 from "@/public/img/home/1.jpg";
+import img10 from "@/public/img/home/10.jpg";
 import img2 from "@/public/img/home/2.jpg";
 import img3 from "@/public/img/home/3.jpg";
+import img4 from "@/public/img/home/4.jpg";
+import img5 from "@/public/img/home/5.jpg";
+import img6 from "@/public/img/home/6.jpg";
+import img7 from "@/public/img/home/7.jpg";
+import img8 from "@/public/img/home/8.jpg";
+import img9 from "@/public/img/home/9.jpg";
 import meltemImg from "@/public/img/meltem.jpg";
 import { Charmonman, Gotu } from "next/font/google";
 import Image from "next/image";
@@ -16,28 +23,34 @@ export default function Home() {
       <section className="items-center">
         <div className="carousel carousel-center p-4 space-x-8">
           <div className="carousel-item">
-            <Image
-              src={img1}
-              alt="Waves"
-              className="rounded-box"
-              height={400}
-            />
+            <Image src={img1} alt="1" className="rounded-box" height={400} />
           </div>
           <div className="carousel-item">
-            <Image
-              src={img2}
-              alt="Meltem Soğuk Stropoli"
-              className="rounded-box"
-              height={400}
-            />
+            <Image src={img2} alt="2" className="rounded-box" height={400} />
           </div>
           <div className="carousel-item">
-            <Image
-              src={img3}
-              alt="Meltem Soğuk Stropoli"
-              className="rounded-box"
-              height={400}
-            />
+            <Image src={img3} alt="3" className="rounded-box" height={400} />
+          </div>
+          <div className="carousel-item">
+            <Image src={img4} alt="4" className="rounded-box" height={400} />
+          </div>
+          <div className="carousel-item">
+            <Image src={img5} alt="5" className="rounded-box" height={400} />
+          </div>
+          <div className="carousel-item">
+            <Image src={img6} alt="6" className="rounded-box" height={400} />
+          </div>
+          <div className="carousel-item">
+            <Image src={img7} alt="7" className="rounded-box" height={400} />
+          </div>
+          <div className="carousel-item">
+            <Image src={img8} alt="8" className="rounded-box" height={400} />
+          </div>
+          <div className="carousel-item">
+            <Image src={img9} alt="9" className="rounded-box" height={400} />
+          </div>
+          <div className="carousel-item">
+            <Image src={img10} alt="10" className="rounded-box" height={400} />
           </div>
         </div>
       </section>
@@ -66,7 +79,7 @@ export default function Home() {
             törpüleyebilmek gibi kavramlar üzerine düşündürücü bir yapıt...
           </p>
           <div className="space-x-2 space-y-2">
-            <p>D&R mağazaları ve tüm kitapçılarda!</p>
+            <p>Tüm kitapçılarda!</p>
             <Link
               href="https://destekdukkan.com/magaza/urun/yesil-mavi-hayat"
               target="_blank"
