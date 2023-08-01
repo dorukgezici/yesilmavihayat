@@ -51,7 +51,7 @@ export default function Home() {
             height={403}
           />
         </div>
-        <div className="w-2/3 prose">
+        <div className="w-5/6 prose">
           <p>
             Günümüzün modern dünyasında çoğumuz hedef odaklı, hızlı, oldukça da
             bireyselleşmiş hayatlar yaşıyoruz. Yaşamdaki “anlam”, genellikle
@@ -97,7 +97,7 @@ export default function Home() {
             height={500}
           />
         </div>
-        <div className="w-2/3 prose">
+        <div className="w-5/6 prose">
           <h2>Yazar Hakkında</h2>
           <p>
             1972 yılının Nisan ayında İstanbul’da dünyaya geldi. Kadıköy Anadolu

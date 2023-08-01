@@ -1,7 +1,7 @@
 export default function ReadingList() {
   return (
     <main className="flex flex-col items-center justify-between space-y-8">
-      <section className="prose mt-8">
+      <section className="prose w-5/6 mt-8">
         <h1>Okuma Listesi</h1>
         <h2 className="-mt-2">Esin ve Bilgi Kaynakları</h2>
         <ul>

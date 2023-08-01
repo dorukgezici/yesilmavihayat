@@ -52,7 +52,7 @@ export default function Reviews() {
         </div>
       </section>
 
-      <section className="w-2/3">
+      <section className="w-5/6">
         <DiscussionEmbed
           shortname="yesilmavihayat"
           config={{
