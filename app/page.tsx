@@ -1,6 +1,8 @@
 import coverImg from "@/public/img/cover.webp";
+import img1 from "@/public/img/home/1.jpg";
+import img2 from "@/public/img/home/2.jpg";
+import img3 from "@/public/img/home/3.jpg";
 import meltemImg from "@/public/img/meltem.jpg";
-import wavesImg from "@/public/img/waves.jpg";
 import { Charmonman, Gotu } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,12 +12,12 @@ const header2Font = Gotu({ weight: "400", subsets: ["latin-ext"] });
 
 export default function Home() {
   return (
-    <main className="flex flex-col min-h-screen items-center justify-between space-y-8">
+    <main className="flex flex-col items-center justify-between space-y-8">
       <section className="items-center">
-        <div className="carousel carousel-center p-8 space-x-8 bg-primary">
+        <div className="carousel carousel-center p-4 space-x-8">
           <div className="carousel-item">
             <Image
-              src={wavesImg}
+              src={img1}
               alt="Waves"
               className="rounded-box"
               height={400}
@@ -23,40 +25,16 @@ export default function Home() {
           </div>
           <div className="carousel-item">
             <Image
-              src={wavesImg}
-              alt="Waves"
+              src={img2}
+              alt="Meltem Soğuk Stropoli"
               className="rounded-box"
               height={400}
             />
           </div>
           <div className="carousel-item">
             <Image
-              src={wavesImg}
-              alt="Waves"
-              className="rounded-box"
-              height={400}
-            />
-          </div>
-          <div className="carousel-item">
-            <Image
-              src={wavesImg}
-              alt="Waves"
-              className="rounded-box"
-              height={400}
-            />
-          </div>
-          <div className="carousel-item">
-            <Image
-              src={wavesImg}
-              alt="Waves"
-              className="rounded-box"
-              height={400}
-            />
-          </div>
-          <div className="carousel-item">
-            <Image
-              src={wavesImg}
-              alt="Waves"
+              src={img3}
+              alt="Meltem Soğuk Stropoli"
               className="rounded-box"
               height={400}
             />
@@ -87,29 +65,25 @@ export default function Home() {
             “ben-öteki”, “insan-doğa”, “insan-hayvan” tarzında ayrımları
             törpüleyebilmek gibi kavramlar üzerine düşündürücü bir yapıt...
           </p>
-          <ul className="list-inside list-disc">
-            <li>D&R mağazaları ve tüm kitapçılarda!</li>
-            <li>
-              <Link
-                href="https://destekdukkan.com/magaza/urun/yesil-mavi-hayat"
-                target="_blank"
-                className="font-medium hover:underline"
-              >
-                destekdukkan.com
-              </Link>{" "}
-              üzerinde %40 indirimli
-            </li>
-            <li>
-              Avrupa’dan temin için{" "}
-              <Link
-                href="https://www.tikla24.de/kitap/meltem-soguk-stropoli/yesil-mavi-hayat-ve-50-yas/"
-                target="_blank"
-                className="font-medium hover:underline"
-              >
-                tikla24.de
-              </Link>
-            </li>
-          </ul>
+          <div className="space-x-2 space-y-2">
+            <p>D&R mağazaları ve tüm kitapçılarda!</p>
+            <Link
+              href="https://destekdukkan.com/magaza/urun/yesil-mavi-hayat"
+              target="_blank"
+              className="btn"
+            >
+              destekdukkan.com
+              <div className="badge">%40 İNDİRİM</div>
+            </Link>
+            <Link
+              href="https://www.tikla24.de/kitap/meltem-soguk-stropoli/yesil-mavi-hayat-ve-50-yas/"
+              target="_blank"
+              className="btn"
+            >
+              tikla24.de
+              <div className="badge">Avrupa</div>
+            </Link>
+          </div>
         </div>
       </section>
 
