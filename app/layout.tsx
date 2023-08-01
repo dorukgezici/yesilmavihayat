@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import classNames from "classnames";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const font = Inter({ weight: "400", subsets: ["latin-ext"] });
@@ -26,6 +27,16 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-89WX1XCMH9" />
+        <Script id="google-analytics">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+ 
+            gtag('config', 'G-89WX1XCMH9');
+          `}
+        </Script>
       </body>
     </html>
   );
