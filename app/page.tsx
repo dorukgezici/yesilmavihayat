@@ -78,12 +78,12 @@ export default function Home() {
             “ben-öteki”, “insan-doğa”, “insan-hayvan” tarzında ayrımları
             törpüleyebilmek gibi kavramlar üzerine düşündürücü bir yapıt...
           </p>
-          <div className="space-x-2 space-y-2">
-            <p>Tüm kitapçılarda!</p>
+          <p>Tüm kitapçılarda!</p>
+          <div className="flex flex-wrap gap-2">
             <Link
               href="https://destekdukkan.com/magaza/urun/yesil-mavi-hayat"
               target="_blank"
-              className="btn"
+              className="btn btn-block md:w-auto"
             >
               destekdukkan.com
               <div className="badge">%40 İNDİRİM</div>
@@ -91,7 +91,7 @@ export default function Home() {
             <Link
               href="https://www.tikla24.de/kitap/meltem-soguk-stropoli/yesil-mavi-hayat-ve-50-yas/"
               target="_blank"
-              className="btn"
+              className="btn btn-block md:w-auto"
             >
               tikla24.de
               <div className="badge">Avrupa</div>
