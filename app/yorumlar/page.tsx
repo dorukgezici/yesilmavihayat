@@ -12,6 +12,8 @@ import img18 from "@/public/img/you/18.jpg";
 import img19 from "@/public/img/you/19.jpg";
 import img2 from "@/public/img/you/2.jpg";
 import img20 from "@/public/img/you/20.jpg";
+import img21 from "@/public/img/you/21.jpg";
+import img22 from "@/public/img/you/22.jpg";
 import img3 from "@/public/img/you/3.jpg";
 import img4 from "@/public/img/you/4.jpg";
 import img5 from "@/public/img/you/5.jpg";
@@ -40,13 +42,16 @@ export default function Reviews() {
             <Image src={img4} alt="4" className="rounded-box" height={400} />
           </div>
           <div className="carousel-item">
+            <Image src={img22} alt="22" className="rounded-box" height={400} />
+          </div>
+          <div className="carousel-item">
             <Image src={img5} alt="5" className="rounded-box" height={400} />
           </div>
           <div className="carousel-item">
-            <Image src={img6} alt="6" className="rounded-box" height={400} />
+            <Image src={img7} alt="7" className="rounded-box" height={400} />
           </div>
           <div className="carousel-item">
-            <Image src={img7} alt="7" className="rounded-box" height={400} />
+            <Image src={img6} alt="6" className="rounded-box" height={400} />
           </div>
           <div className="carousel-item">
             <Image src={img8} alt="8" className="rounded-box" height={400} />
@@ -88,6 +93,9 @@ export default function Reviews() {
           </div>
           <div className="carousel-item">
             <Image src={img20} alt="20" className="rounded-box" height={400} />
+          </div>
+          <div className="carousel-item">
+            <Image src={img21} alt="21" className="rounded-box" height={400} />
           </div>
         </div>
       </section>
