@@ -16,6 +16,10 @@ import img21 from "@/public/img/you/21.jpg";
 import img22 from "@/public/img/you/22.jpg";
 import img23 from "@/public/img/you/23.jpg";
 import img24 from "@/public/img/you/24.jpg";
+import img25 from "@/public/img/you/25.jpg";
+import img26 from "@/public/img/you/26.jpg";
+import img27 from "@/public/img/you/27.jpg";
+import img28 from "@/public/img/you/28.jpg";
 import img3 from "@/public/img/you/3.jpg";
 import img4 from "@/public/img/you/4.jpg";
 import img5 from "@/public/img/you/5.jpg";
@@ -33,6 +37,9 @@ export default function Reviews() {
         <div className="carousel carousel-center p-4 space-x-8">
           <div className="carousel-item">
             <Image src={img2} alt="2" className="rounded-box" height={400} />
+          </div>
+          <div className="carousel-item">
+            <Image src={img26} alt="26" className="rounded-box" height={400} />
           </div>
           <div className="carousel-item">
             <Image src={img4} alt="4" className="rounded-box" height={400} />
@@ -56,6 +63,9 @@ export default function Reviews() {
             <Image src={img5} alt="5" className="rounded-box" height={400} />
           </div>
           <div className="carousel-item">
+            <Image src={img28} alt="28" className="rounded-box" height={400} />
+          </div>
+          <div className="carousel-item">
             <Image src={img3} alt="3" className="rounded-box" height={400} />
           </div>
           <div className="carousel-item">
@@ -69,6 +79,9 @@ export default function Reviews() {
           </div>
         </div>
         <div className="carousel carousel-center p-4 space-x-8">
+          <div className="carousel-item">
+            <Image src={img25} alt="25" className="rounded-box" height={400} />
+          </div>
           <div className="carousel-item">
             <Image src={img11} alt="11" className="rounded-box" height={400} />
           </div>
@@ -104,6 +117,9 @@ export default function Reviews() {
           </div>
           <div className="carousel-item">
             <Image src={img21} alt="21" className="rounded-box" height={400} />
+          </div>
+          <div className="carousel-item">
+            <Image src={img27} alt="27" className="rounded-box" height={400} />
           </div>
         </div>
       </section>
