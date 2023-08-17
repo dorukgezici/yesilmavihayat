@@ -14,6 +14,9 @@ export default function Header() {
     <Link key="okuma-listesi" href="/okuma-listesi">
       Okuma Listesi
     </Link>,
+    <Link key="medya" href="/medya">
+      Medya
+    </Link>,
     <Link
       key="buy"
       href="https://destekdukkan.com/magaza/urun/yesil-mavi-hayat"
