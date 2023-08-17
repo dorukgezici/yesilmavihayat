@@ -1,0 +1,104 @@
+<script>
+  import { Carousel } from "$lib";
+  import coverImg from "$lib/assets/cover.webp";
+  import img1 from "$lib/assets/home/1.jpg";
+  import img10 from "$lib/assets/home/10.jpg";
+  import img2 from "$lib/assets/home/2.jpg";
+  import img3 from "$lib/assets/home/3.jpg";
+  import img4 from "$lib/assets/home/4.jpg";
+  import img5 from "$lib/assets/home/5.jpg";
+  import img6 from "$lib/assets/home/6.jpg";
+  import img7 from "$lib/assets/home/7.jpg";
+  import img8 from "$lib/assets/home/8.jpg";
+  import img9 from "$lib/assets/home/9.jpg";
+  import meltemImg from "$lib/assets/meltem.jpg";
+
+  const imgs = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10];
+</script>
+
+<main class="flex flex-col items-center justify-between space-y-8">
+  <section class="items-center">
+    <Carousel {imgs} />
+  </section>
+
+  <section class="flex flex-wrap items-center justify-center">
+    <div class="flex w-auto m-8">
+      <img src={coverImg} alt="Yeşil Mavi Hayat" width={256} height={403} />
+    </div>
+    <div class="w-5/6 prose">
+      <p>
+        Günümüzün modern dünyasında çoğumuz hedef odaklı, hızlı, oldukça da
+        bireyselleşmiş hayatlar yaşıyoruz. Yaşamdaki “anlam”, genellikle başarı
+        ve toplumsal statü ile ilişkilendirilirken, insanı insan yapan erdemler
+        ise burun kıvrılan demode değerler haline geldiler.
+      </p>
+      <p>
+        Büyük resmi kaybetmeden “gerçek kendimiz”i keşfedebilmek, sadece
+        bireysel hırs ve tüketme odaklı bir şekilde bencilce yaşamamak, doğanın
+        sahibi değil de onun bir parçası olduğumuzu unutmamak, “ben-öteki”,
+        “insan-doğa”, “insan-hayvan” tarzında ayrımları törpüleyebilmek gibi
+        kavramlar üzerine düşündürücü bir yapıt...
+      </p>
+      <p>Tüm kitapçılarda!</p>
+      <div class="flex flex-wrap gap-2">
+        <a
+          href="https://destekdukkan.com/magaza/urun/yesil-mavi-hayat"
+          target="_blank"
+          class="btn btn-block md:w-auto"
+        >
+          destekdukkan.com
+          <div class="badge">%40 İNDİRİM</div>
+        </a>
+        <a
+          href="https://www.tikla24.de/kitap/meltem-soguk-stropoli/yesil-mavi-hayat-ve-50-yas/"
+          target="_blank"
+          class="btn btn-block md:w-auto"
+        >
+          tikla24.de
+          <div class="badge">Avrupa</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="flex flex-wrap flex-row-reverse items-center justify-center">
+    <div class="flex w-auto m-8">
+      <img
+        src={meltemImg}
+        alt="Meltem Soğuk Stropoli"
+        class="rounded-2xl w-[333px] h-[500px]"
+      />
+    </div>
+    <div class="w-5/6 prose">
+      <h2>Yazar Hakkında</h2>
+      <p>
+        1972 yılının Nisan ayında İstanbul’da dünyaya geldi. Kadıköy Anadolu
+        Lisesi ve İstanbul Üniversitesi Eczacılık Fakültesi’nin ardından İlaç
+        Endüstrisi’nde pazarlama alanında toplam on sekiz yıl boyunca Türkiye,
+        İsviçre ve İrlanda’da yöneticilik görevlerinde bulunan{" "}
+        <b>Meltem Soğuk Stropoli</b>, ek olarak da altı yıl sahibi olduğu
+        kreatif ajansın iki kurucu ortağından biri olarak yöneticilik görevini
+        yürüttü.
+      </p>
+      <p>
+        Uzun yıllar kurumsal hayatta –kendi tanımıyla– büyüme odaklı, öğütücü
+        bir düzenin parçası olarak yer aldıktan sonra hayatının akışına farklı
+        bir yön vermek istedi ve 2020 yılında yaşanan pandemi sırasında kurumsal
+        hayatı bırakma kararı aldı. 2021 yılında, merkezi New York’ta bulunan
+        Institute for Integrative Nutrition’da Bütünsel Beslenme Danışmanlığı ve
+        Sağlık Koçluğu eğitimini tamamladı. Hayatta hiçbir yaşın öğrenmek ve
+        kendini geliştirmek için geç olmadığına inanan Soğuk Stropoli, öğrenme
+        hevesinin artarak devam ettiği bilinçli, iyi ve sağlıklı yaşama
+        yolculuğuna 2022 yılında, merkezi Chicago’da bulunan Functional Medicine
+        Coaching Academy’de Fonksiyonel Tıp Sağlık Koçluğu eğitimi ile devam
+        etti.
+      </p>
+      <p>
+        2013 yılında İtalyan olan eşi ile evlenip İsviçre’ye taşınan yazar, bu
+        süre içinde iki yıl Dublin’de yaşadıktan sonra 2022 yılında tekrar
+        İsviçre’ye döndü. Şu anda hayatını eşi ve köpeğiyle birlikte İsviçre’de
+        sürdürmekte ve bireysel Sağlık Koçluğu yapmaktadır.
+      </p>
+    </div>
+  </section>
+</main>
