@@ -1,5 +1,5 @@
-"use client";
 import Carousel from "@/components/Carousel";
+import Disqus from "@/components/Disqus";
 import img1 from "@/public/img/you/1.jpg";
 import img10 from "@/public/img/you/10.jpg";
 import img11 from "@/public/img/you/11.jpg";
@@ -30,43 +30,18 @@ import img6 from "@/public/img/you/6.jpg";
 import img7 from "@/public/img/you/7.jpg";
 import img8 from "@/public/img/you/8.jpg";
 import img9 from "@/public/img/you/9.jpg";
-import { DiscussionEmbed } from "disqus-react";
+import type { Metadata } from "next";
+import type { StaticImageData } from "next/image";
+
+export const metadata: Metadata = {
+  title: "Yorumlar | Yeşil Mavi Hayat",
+  authors: [{ name: "Meltem Soğuk Stropoli" }],
+  description:
+    "Yeşil Mavi Hayat okuyucularının kitap hakkındaki yorumları ve gönderdikleri resimler",
+};
 
 export default function Reviews() {
-  let imgs1 = [
-    img2,
-    img26,
-    img4,
-    img22,
-    img7,
-    img23,
-    img8,
-    img29,
-    img10,
-    img5,
-    img28,
-    img3,
-    img9,
-    img1,
-    img6,
-  ];
-  let imgs2 = [
-    img25,
-    img11,
-    img12,
-    img30,
-    img13,
-    img14,
-    img24,
-    img18,
-    img15,
-    img16,
-    img17,
-    img19,
-    img20,
-    img21,
-    img27,
-  ];
+  const { imgs1, imgs2 } = getImgs();
 
   return (
     <main className="flex flex-col items-center justify-between space-y-8">
@@ -76,16 +51,47 @@ export default function Reviews() {
       </section>
 
       <section className="w-5/6">
-        <DiscussionEmbed
-          shortname="yesilmavihayat"
-          config={{
-            url: "https://yesilmavihayat.com",
-            identifier: "yorumlar",
-            title: "Yeşil Mavi Hayat",
-            language: "tr",
-          }}
-        />
+        <Disqus />
       </section>
     </main>
   );
+}
+
+function getImgs(): { imgs1: StaticImageData[]; imgs2: StaticImageData[] } {
+  return {
+    imgs1: [
+      img2,
+      img26,
+      img4,
+      img22,
+      img7,
+      img23,
+      img8,
+      img29,
+      img10,
+      img5,
+      img28,
+      img3,
+      img9,
+      img1,
+      img6,
+    ],
+    imgs2: [
+      img25,
+      img11,
+      img12,
+      img30,
+      img13,
+      img14,
+      img24,
+      img18,
+      img15,
+      img16,
+      img17,
+      img19,
+      img20,
+      img21,
+      img27,
+    ],
+  };
 }

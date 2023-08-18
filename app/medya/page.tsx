@@ -2,9 +2,36 @@ import ArticleCard from "@/components/ArticleCard";
 import bidunyaImg from "@/public/img/media/bidunya.webp";
 import gercekGundemImg from "@/public/img/media/gercekgundem.webp";
 import kisaDalgaImg from "@/public/img/media/kisadalga.png";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Medya | Yeşil Mavi Hayat",
+  authors: [{ name: "Meltem Soğuk Stropoli" }],
+  description:
+    "Yeşil Mavi Hayat hakkında çıkan haberler, röportajlar ve yazılar",
+};
 
 export default function Media() {
-  const articles: Article[] = [
+  const articles = getArticles();
+
+  return (
+    <main className="flex flex-col items-center justify-between space-y-8">
+      <section className="prose max-w-none w-5/6 mt-8">
+        <h1 className="text-center text-2xl sm:text-4xl mb-12">
+          Medyada Yeşil Mavi Hayat
+        </h1>
+        <div className="flex flex-row flex-wrap justify-center gap-4">
+          {articles.map((article) => (
+            <ArticleCard key={article.url} article={article} />
+          ))}
+        </div>
+      </section>
+    </main>
+  );
+}
+
+function getArticles(): Article[] {
+  return [
     {
       source: "Gerçek Gündem",
       url: "https://www.gercekgundem.com/amp/guncel/meltem-soguk-stropolinin-ilk-kitabi-yesil-mavi-hayatla-insan-yasama-yoluna-cikmak-433067",
@@ -35,19 +62,4 @@ export default function Media() {
         '"Sadece kendimi ve hayatı keşfetme yolculuğuna durmaksızın devam eden pek çok kişiden biriyim ve hayatın –eğer iyi okumayı öğrenebilirsek– bizlere tüm sorularının yanında, cevapları da birlikte sunduğuna inanıyorum."',
     },
   ];
-
-  return (
-    <main className="flex flex-col items-center justify-between space-y-8">
-      <section className="prose max-w-none w-5/6 mt-8">
-        <h1 className="text-center text-2xl sm:text-4xl mb-12">
-          Medyada Yeşil Mavi Hayat
-        </h1>
-        <div className="flex flex-row flex-wrap justify-center gap-4">
-          {articles.map((article) => (
-            <ArticleCard key={article.url} article={article} />
-          ))}
-        </div>
-      </section>
-    </main>
-  );
 }

@@ -1,9 +1,10 @@
+"use client";
 import type { StaticImageData } from "next/image";
 import Image from "next/image";
-import { useCallback } from "react";
+import { useEffect } from "react";
 
 export default function Carousel({ imgs }: { imgs: StaticImageData[] }) {
-  const shuffle = useCallback(() => {
+  useEffect(() => {
     // Fisher-Yates (aka Knuth) Shuffle
     let currentIndex = imgs.length,
       randomIndex;
@@ -21,9 +22,6 @@ export default function Carousel({ imgs }: { imgs: StaticImageData[] }) {
       ];
     }
   }, [imgs]);
-
-  // shuffle imgs on every render
-  shuffle();
 
   return (
     <div className="carousel carousel-center p-4 space-x-8">

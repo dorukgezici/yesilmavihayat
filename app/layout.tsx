@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title: "Yeşil Mavi Hayat",
   authors: [{ name: "Meltem Soğuk Stropoli" }],
   description:
-    "Meltem Soğuk Stropoli’nin Destek Yayınlarından Ağustos ayında çıkan kitabı Yeşil Mavi Hayat hakkında tüm bilgiler",
+    "Meltem Soğuk Stropoli’nin Destek Yayınları'ndan Ağustos ayında çıkan kitabı Yeşil Mavi Hayat hakkında tüm bilgiler",
 };
 
 export default function RootLayout({

@@ -1,3 +1,11 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Okuma Listesi | Yeşil Mavi Hayat",
+  authors: [{ name: "Meltem Soğuk Stropoli" }],
+  description: "Yeşil Mavi Hayat için ilham ve bilgi kaynağı olan kitaplar",
+};
+
 export default function ReadingList() {
   return (
     <main className="flex flex-col items-center justify-between space-y-8">
