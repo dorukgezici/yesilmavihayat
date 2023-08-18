@@ -7,24 +7,7 @@ const headerFont = Charmonman({ weight: "700", subsets: ["latin-ext"] });
 const header2Font = Gotu({ weight: "400", subsets: ["latin-ext"] });
 
 export default function Header() {
-  const links = [
-    <Link key="reviews" href="/yorumlar">
-      Sizden Gelenler
-    </Link>,
-    <Link key="okuma-listesi" href="/okuma-listesi">
-      Okuma Listesi
-    </Link>,
-    <Link key="medya" href="/medya">
-      Medya
-    </Link>,
-    <Link
-      key="buy"
-      href="https://destekdukkan.com/magaza/urun/yesil-mavi-hayat"
-      target="_blank"
-    >
-      Satın Al
-    </Link>,
-  ];
+  const links = getLinks();
   const handleClick = () => (document.activeElement as HTMLElement)?.blur();
 
   return (
@@ -89,4 +72,25 @@ export default function Header() {
       </div>
     </div>
   );
+}
+
+function getLinks(): JSX.Element[] {
+  return [
+    <Link key="reviews" href="/yorumlar">
+      Sizden Gelenler
+    </Link>,
+    <Link key="okuma-listesi" href="/okuma-listesi">
+      Okuma Listesi
+    </Link>,
+    <Link key="medya" href="/medya">
+      Medya
+    </Link>,
+    <Link
+      key="buy"
+      href="https://destekdukkan.com/magaza/urun/yesil-mavi-hayat"
+      target="_blank"
+    >
+      Satın Al
+    </Link>,
+  ];
 }

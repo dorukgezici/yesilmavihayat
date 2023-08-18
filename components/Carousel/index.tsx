@@ -30,7 +30,7 @@ export default function Carousel({ imgs }: { imgs: StaticImageData[] }) {
           <Image
             src={img}
             alt="Yeşil Mavi Hayat"
-            className="rounded-box"
+            className="rounded-box w-auto h-[400px]"
             height={400}
           />
         </div>

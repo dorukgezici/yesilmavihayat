@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: "Yeşil Mavi Hayat için ilham ve bilgi kaynağı olan kitaplar",
 };
 
-export default function ReadingList() {
+export default async function ReadingList() {
   return (
     <main className="flex flex-col items-center justify-between space-y-8">
       <section className="prose w-5/6 mt-8">

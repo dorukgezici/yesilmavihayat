@@ -11,11 +11,12 @@ import img7 from "@/public/img/home/7.jpg";
 import img8 from "@/public/img/home/8.jpg";
 import img9 from "@/public/img/home/9.jpg";
 import meltemImg from "@/public/img/meltem.jpg";
+import type { StaticImageData } from "next/image";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Home() {
-  const imgs = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10];
+export default async function Home() {
+  const imgs = getImgs();
 
   return (
     <main className="flex flex-col items-center justify-between space-y-8">
@@ -112,4 +113,8 @@ export default function Home() {
       </section>
     </main>
   );
+}
+
+function getImgs(): StaticImageData[] {
+  return [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10];
 }

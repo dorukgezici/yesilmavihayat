@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     "Yeşil Mavi Hayat okuyucularının kitap hakkındaki yorumları ve gönderdikleri resimler",
 };
 
-export default function Reviews() {
+export default async function Reviews() {
   const { imgs1, imgs2 } = getImgs();
 
   return (

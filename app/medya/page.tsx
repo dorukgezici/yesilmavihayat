@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     "Yeşil Mavi Hayat hakkında çıkan haberler, röportajlar ve yazılar",
 };
 
-export default function Media() {
+export default async function Media() {
   const articles = getArticles();
 
   return (
