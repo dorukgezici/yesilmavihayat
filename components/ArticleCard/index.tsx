@@ -9,12 +9,15 @@ export default async function ArticleCard({ article }: { article: Article }) {
       className={classNames(styles.card, "w-full lg:w-2/5 max-w-[400px]")}
     >
       <Link href={article.url} target="_blank" className="no-underline">
-        <div className="flex justify-center object-cover">
+        <div className="flex justify-center not-prose m-[-2rem] mb-2 shadow">
+          {/* img overlay */}
+          <div className="h-[250px] w-full bg-black/10 z-10 fixed" />
           <Image
             src={article.img}
             alt={article.title}
-            height={200}
-            width={200}
+            className="rounded-t object-cover h-[250px]"
+            height={250}
+            width={400}
           />
         </div>
 
