@@ -2,6 +2,8 @@ import ArticleCard from "@/components/ArticleCard";
 import bidunyaImg from "@/public/img/media/bidunya.webp";
 import gercekGundemImg from "@/public/img/media/gercekgundem.webp";
 import kisaDalgaImg from "@/public/img/media/kisadalga.png";
+import hakanBirolImg from "@/public/img/media/ropartaj-hakan-birol.jpeg";
+import serbestGorusImg from "@/public/img/media/serbestgorus.webp";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -33,6 +35,15 @@ export default async function Media() {
 function getArticles(): Article[] {
   return [
     {
+      source: "Fethiye Haber",
+      url: "https://www.fethiyehaber.com/yazarlarla-roportaj-hakan-birol-soruyor-56/",
+      img: hakanBirolImg.src,
+      pubDate: "2023-08-18",
+      title: "Yazarlarla Röportaj / Hakan Birol Soruyor",
+      description:
+        "Merhaba değerli okuyucularımız. Her hafta bir yazarla röportaj köşemizde bu hafta “Yeşil Mavi Hayat – Ve 50 Yaş” kitabıyla tanıdığımız “Meltem Soğuk Stropoli” var.",
+    },
+    {
       source: "Gerçek Gündem",
       url: "https://www.gercekgundem.com/amp/guncel/meltem-soguk-stropolinin-ilk-kitabi-yesil-mavi-hayatla-insan-yasama-yoluna-cikmak-433067",
       img: gercekGundemImg.src,
@@ -41,6 +52,16 @@ function getArticles(): Article[] {
         "Meltem Soğuk Stropoli’nin ilk kitabı: Yeşil Mavi Hayat’la “insanca yaşama” yoluna çıkmak",
       description:
         "Meltem Soğuk Stropoli Yeşil Mavi Hayat adlı kitabıyla yaşamın değeri ve insan olmak üzerine fikir yürütmeyi seven herkese kendilerinden ve düşüncelerinden bulabilecekleri bir izlek sunuyor.",
+    },
+    {
+      source: "Serbest Görüş",
+      url: "https://serbestgorus.com/2023/08/meltem-soguk-stropolinin-ilk-kitabi-yesil-mavi-hayatla-insan-yasama-yoluna-cikmak/",
+      img: serbestGorusImg.src,
+      pubDate: "2023-08-15",
+      title:
+        "Meltem Soğuk Stropoli’nin ilk kitabı: Yeşil Mavi Hayat’la “insanca yaşama” yoluna çıkmak",
+      description:
+        "“Kulağa, şifresi çözülmeyi bekleyen bir sır gibi gelen ‘yaşamın hakkını vermek’ fikrinin, aslında ‘daha fazla insan olmak’ ve ‘insanca yaşamaktan’ çok da farklı bir şey olmadığını biliyorum artık.”",
     },
     {
       source: "Kısa Dalga",
