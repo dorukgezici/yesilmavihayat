@@ -1,5 +1,6 @@
 import ArticleCard from "@/components/ArticleCard";
 import bidunyaImg from "@/public/img/media/bidunya.webp";
+import birgunImg from "@/public/img/media/birgun.jpeg";
 import gercekGundemImg from "@/public/img/media/gercekgundem.webp";
 import kisaDalgaImg from "@/public/img/media/kisadalga.png";
 import hakanBirolImg from "@/public/img/media/ropartaj-hakan-birol.jpeg";
@@ -34,6 +35,15 @@ export default async function Media() {
 
 function getArticles(): Article[] {
   return [
+    {
+      source: "BirGün",
+      url: "https://clips.medyatakip.com/pm/clip/LeVFmsA0QlF7JRMaDVzwp",
+      img: birgunImg.src,
+      pubDate: "2023-08-20",
+      title: "Filozoflarla yaşamın değeri ve insan olmak üzerine",
+      description:
+        "Hepimizin aklından geçen soruların yanıtlarını ararken Arthur Schopenhauer, Carl Gustav Jung, Engin Geçtan, Viktor E. Frankl, Wilhelm Schmid, Henry David Thoreau, Carl Sagan, Gündüz Vassaf ile Sokrates, Aristoteles, Epikür, Seneca, Farabi gibi Antik Yunan, Roma ve İslam filozoflarının fikirlerinden de yararlanıyor.",
+    },
     {
       source: "Fethiye Haber",
       url: "https://www.fethiyehaber.com/yazarlarla-roportaj-hakan-birol-soruyor-56/",
