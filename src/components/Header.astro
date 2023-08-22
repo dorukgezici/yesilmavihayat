@@ -1,0 +1,71 @@
+---
+type Link = {
+  href: string;
+  text: string;
+  target?: string;
+};
+
+const links: Link[] = [
+  { href: "yorumlar", text: "Sizden Gelenler" },
+  { href: "okuma-listesi", text: "Okuma Listesi" },
+  { href: "medya", text: "Medya" },
+  { href: "https://destekdukkan.com/magaza/urun/yesil-mavi-hayat", text: "Satın Al", target: "_blank" },
+];
+---
+
+<div class="navbar p-4">
+  <div class="flex-1">
+    <a href="/" class="font-charmonman btn btn-ghost normal-case text-xl md:text-2xl"> Yeşil Mavi Hayat</a>
+    <span class="font-gotu hidden sm:block ml-4">MELTEM SOĞUK STROPOLI</span>
+  </div>
+  <div class="flex-none">
+    <div class="block md:hidden">
+      <details id="menu-dropdown" class="dropdown dropdown-left">
+        <summary class="btn btn-ghost btn-circle">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5"
+            fill="none"
+            view-box="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"></path>
+          </svg>
+        </summary>
+        <ul class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+          {
+            links.map((link) => (
+              <li>
+                <a href={link.href} target={link.target}>
+                  {link.text}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </details>
+    </div>
+
+    <div class="hidden md:block">
+      <ul class="menu menu-horizontal px-1">
+        {
+          links.map((link) => (
+            <li>
+              <a href={link.href} target={link.target}>
+                {link.text}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+  var dropdown = document.querySelector("#menu-dropdown");
+
+  document.addEventListener("click", (event) => {
+    if (!dropdown?.contains(event.target as Node)) dropdown?.removeAttribute("open");
+  });
+</script>

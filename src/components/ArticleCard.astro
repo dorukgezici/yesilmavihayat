@@ -1,0 +1,32 @@
+---
+type Article = {
+  source: string;
+  url: string;
+  img: string;
+  title: string;
+  description: string;
+  pubDate: string;
+};
+
+interface Props {
+  article: Article;
+}
+
+const { article } = Astro.props;
+---
+
+<a href={article.url} target="_blank" class="no-underline not-prose">
+  <div class="card w-96 bg-base-200 shadow-xl">
+    <figure>
+      <img src={article.img} alt={article.title} class="object-cover h-[250px] w-[384px]" height={250} width={384} />
+    </figure>
+    <div class="card-body prose">
+      <h2 class="card-title">{article.title}</h2>
+      <p>{article.description}</p>
+      <div class="card-actions justify-end mt-4">
+        <div class="badge badge-outline">#{article.source}</div>
+        <div class="badge badge-outline">{new Date(article.pubDate).toLocaleDateString("tr")}</div>
+      </div>
+    </div>
+  </div>
+</a>

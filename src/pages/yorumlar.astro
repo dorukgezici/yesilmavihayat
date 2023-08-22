@@ -30,7 +30,7 @@ import img7 from "../assets/img/you/7.jpg";
 import img8 from "../assets/img/you/8.jpg";
 import img9 from "../assets/img/you/9.jpg";
 import Carousel from "../components/Carousel.astro";
-import Disqus from "../components/Disqus";
+import Disqus from "../components/Disqus.astro";
 import Layout from "../layouts/Layout.astro";
 
 const imgs1 = [img2, img26, img4, img22, img7, img23, img8, img29, img10, img5, img28, img3, img9, img1, img6];
@@ -45,7 +45,7 @@ const imgs2 = [img25, img11, img12, img30, img13, img14, img24, img18, img15, im
     </section>
 
     <section class="w-5/6">
-      <Disqus client:load />
+      <Disqus />
     </section>
   </main>
 </Layout>
