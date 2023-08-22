@@ -1,0 +1,31 @@
+---
+interface Props {
+  imgs: ImageMetadata[];
+}
+
+const { imgs } = Astro.props;
+
+// Fisher-Yates (aka Knuth) Shuffle
+let currentIndex = imgs.length;
+let randomIndex;
+
+// While there remain elements to shuffle.
+while (currentIndex != 0) {
+  // Pick a remaining element.
+  randomIndex = Math.floor(Math.random() * currentIndex);
+  currentIndex--;
+
+  // And swap it with the current element.
+  [imgs[currentIndex], imgs[randomIndex]] = [imgs[randomIndex], imgs[currentIndex]];
+}
+---
+
+<div class="carousel carousel-center p-4 space-x-8">
+  {
+    imgs.map((img) => (
+      <div class="carousel-item">
+        <img src={img.src} alt="Yeşil Mavi Hayat" class="rounded-box w-auto h-[400px]" height={400} />
+      </div>
+    ))
+  }
+</div>
