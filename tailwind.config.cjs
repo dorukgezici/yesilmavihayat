@@ -1,10 +1,18 @@
+const defaultTheme = require("tailwindcss/defaultTheme");
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
+  content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   plugins: [require("@tailwindcss/typography"), require("daisyui")],
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ["InterVariable", "Inter", ...defaultTheme.fontFamily.sans],
+        charmonman: ["Charmonman", ...defaultTheme.fontFamily.sans],
+        gotu: ["Gotu", ...defaultTheme.fontFamily.sans],
+      },
+    },
+  },
   daisyui: {
     themes: [
       {

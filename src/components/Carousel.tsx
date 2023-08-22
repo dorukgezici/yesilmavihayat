@@ -1,9 +1,6 @@
-"use client";
-import type { StaticImageData } from "next/image";
-import Image from "next/image";
 import { useEffect } from "react";
 
-export default function Carousel({ imgs }: { imgs: StaticImageData[] }) {
+export default function Carousel({ imgs }: { imgs: ImageMetadata[] }) {
   useEffect(() => {
     // Fisher-Yates (aka Knuth) Shuffle
     let currentIndex = imgs.length,
@@ -27,8 +24,8 @@ export default function Carousel({ imgs }: { imgs: StaticImageData[] }) {
     <div className="carousel carousel-center p-4 space-x-8">
       {imgs.map((img) => (
         <div key={img.src} className="carousel-item">
-          <Image
-            src={img}
+          <img
+            src={img.src}
             alt="Yeşil Mavi Hayat"
             className="rounded-box w-auto h-[400px]"
             height={400}

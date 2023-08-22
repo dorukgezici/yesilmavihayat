@@ -1,30 +1,34 @@
-"use client";
-import classNames from "classnames";
-import { Charmonman, Gotu } from "next/font/google";
-import Link from "next/link";
-
-const headerFont = Charmonman({ weight: "700", subsets: ["latin-ext"] });
-const header2Font = Gotu({ weight: "400", subsets: ["latin-ext"] });
-
 export default function Header() {
-  const links = getLinks();
+  const links = [
+    <a key="reviews" href="/yorumlar">
+      Sizden Gelenler
+    </a>,
+    <a key="okuma-listesi" href="/okuma-listesi">
+      Okuma Listesi
+    </a>,
+    <a key="medya" href="/medya">
+      Medya
+    </a>,
+    <a
+      key="buy"
+      href="https://destekdukkan.com/magaza/urun/yesil-mavi-hayat"
+      target="_blank"
+    >
+      Satın Al
+    </a>,
+  ];
   const handleClick = () => (document.activeElement as HTMLElement)?.blur();
 
   return (
     <div className="navbar p-4">
       <div className="flex-1">
-        <Link
+        <a
           href="/"
-          className={classNames(
-            "btn btn-ghost normal-case text-xl md:text-2xl",
-            headerFont.className
-          )}
+          className="font-charmonman btn btn-ghost normal-case text-xl md:text-2xl"
         >
           Yeşil Mavi Hayat
-        </Link>
-        <span
-          className={classNames("hidden sm:block ml-4", header2Font.className)}
-        >
+        </a>
+        <span className="font-gotu hidden sm:block ml-4">
           MELTEM SOĞUK STROPOLI
         </span>
       </div>
@@ -72,25 +76,4 @@ export default function Header() {
       </div>
     </div>
   );
-}
-
-function getLinks(): JSX.Element[] {
-  return [
-    <Link key="reviews" href="/yorumlar">
-      Sizden Gelenler
-    </Link>,
-    <Link key="okuma-listesi" href="/okuma-listesi">
-      Okuma Listesi
-    </Link>,
-    <Link key="medya" href="/medya">
-      Medya
-    </Link>,
-    <Link
-      key="buy"
-      href="https://destekdukkan.com/magaza/urun/yesil-mavi-hayat"
-      target="_blank"
-    >
-      Satın Al
-    </Link>,
-  ];
 }

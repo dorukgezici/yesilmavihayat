@@ -1,0 +1,83 @@
+---
+import img1 from "../assets/img/you/1.jpg";
+import img10 from "../assets/img/you/10.jpg";
+import img11 from "../assets/img/you/11.jpg";
+import img12 from "../assets/img/you/12.jpg";
+import img13 from "../assets/img/you/13.jpg";
+import img14 from "../assets/img/you/14.jpg";
+import img15 from "../assets/img/you/15.jpg";
+import img16 from "../assets/img/you/16.jpg";
+import img17 from "../assets/img/you/17.jpg";
+import img18 from "../assets/img/you/18.jpg";
+import img19 from "../assets/img/you/19.jpg";
+import img2 from "../assets/img/you/2.jpg";
+import img20 from "../assets/img/you/20.jpg";
+import img21 from "../assets/img/you/21.jpg";
+import img22 from "../assets/img/you/22.jpg";
+import img23 from "../assets/img/you/23.jpg";
+import img24 from "../assets/img/you/24.jpg";
+import img25 from "../assets/img/you/25.jpg";
+import img26 from "../assets/img/you/26.jpg";
+import img27 from "../assets/img/you/27.jpg";
+import img28 from "../assets/img/you/28.jpg";
+import img29 from "../assets/img/you/29.jpg";
+import img3 from "../assets/img/you/3.jpg";
+import img30 from "../assets/img/you/30.jpg";
+import img4 from "../assets/img/you/4.jpg";
+import img5 from "../assets/img/you/5.jpg";
+import img6 from "../assets/img/you/6.jpg";
+import img7 from "../assets/img/you/7.jpg";
+import img8 from "../assets/img/you/8.jpg";
+import img9 from "../assets/img/you/9.jpg";
+import Carousel from "../components/Carousel";
+import Disqus from "../components/Disqus";
+import Layout from "../layouts/Layout.astro";
+
+const imgs1 = [
+  img2,
+  img26,
+  img4,
+  img22,
+  img7,
+  img23,
+  img8,
+  img29,
+  img10,
+  img5,
+  img28,
+  img3,
+  img9,
+  img1,
+  img6,
+];
+const imgs2 = [
+  img25,
+  img11,
+  img12,
+  img30,
+  img13,
+  img14,
+  img24,
+  img18,
+  img15,
+  img16,
+  img17,
+  img19,
+  img20,
+  img21,
+  img27,
+];
+---
+
+<Layout title="Sizden Gelenler | Yeşil Mavi Hayat">
+  <main class="flex flex-col items-center justify-between space-y-8">
+    <section class="flex flex-col">
+      <Carousel imgs={imgs1} />
+      <Carousel imgs={imgs2} />
+    </section>
+
+    <section class="w-5/6">
+      <Disqus client:load />
+    </section>
+  </main>
+</Layout>
