@@ -32,8 +32,7 @@ const articles = [
     url: "https://www.gercekgundem.com/amp/guncel/meltem-soguk-stropolinin-ilk-kitabi-yesil-mavi-hayatla-insan-yasama-yoluna-cikmak-433067",
     img: gercekGundemImg.src,
     pubDate: "2023-08-15",
-    title:
-      "Meltem Soğuk Stropoli’nin ilk kitabı: Yeşil Mavi Hayat’la “insanca yaşama” yoluna çıkmak",
+    title: "Meltem Soğuk Stropoli’nin ilk kitabı: Yeşil Mavi Hayat’la “insanca yaşama” yoluna çıkmak",
     description:
       "Meltem Soğuk Stropoli Yeşil Mavi Hayat adlı kitabıyla yaşamın değeri ve insan olmak üzerine fikir yürütmeyi seven herkese kendilerinden ve düşüncelerinden bulabilecekleri bir izlek sunuyor.",
   },
@@ -42,8 +41,7 @@ const articles = [
     url: "https://serbestgorus.com/2023/08/meltem-soguk-stropolinin-ilk-kitabi-yesil-mavi-hayatla-insan-yasama-yoluna-cikmak/",
     img: serbestGorusImg.src,
     pubDate: "2023-08-15",
-    title:
-      "Meltem Soğuk Stropoli’nin ilk kitabı: Yeşil Mavi Hayat’la “insanca yaşama” yoluna çıkmak",
+    title: "Meltem Soğuk Stropoli’nin ilk kitabı: Yeşil Mavi Hayat’la “insanca yaşama” yoluna çıkmak",
     description:
       "“Kulağa, şifresi çözülmeyi bekleyen bir sır gibi gelen ‘yaşamın hakkını vermek’ fikrinin, aslında ‘daha fazla insan olmak’ ve ‘insanca yaşamaktan’ çok da farklı bir şey olmadığını biliyorum artık.”",
   },
@@ -61,8 +59,7 @@ const articles = [
     url: "https://www.bidunyahaber.net/meltem-soguk-stropoli-nin-yazdigi-yesil-mavi-hayat-destek-yayinlari-ndan-cikti-h112265.html",
     img: bidunyaImg.src,
     pubDate: "2023-08-09",
-    title:
-      "Meltem Soğuk Stropoli’nin yazdığı Yeşil Mavi Hayat Destek Yayınları’ndan çıktı.",
+    title: "Meltem Soğuk Stropoli’nin yazdığı Yeşil Mavi Hayat Destek Yayınları’ndan çıktı.",
     description:
       '"Sadece kendimi ve hayatı keşfetme yolculuğuna durmaksızın devam eden pek çok kişiden biriyim ve hayatın –eğer iyi okumayı öğrenebilirsek– bizlere tüm sorularının yanında, cevapları da birlikte sunduğuna inanıyorum."',
   },
@@ -72,10 +69,8 @@ const articles = [
 <Layout title="Medya | Yeşil Mavi Hayat">
   <main class="flex flex-col items-center justify-between space-y-8">
     <section class="prose max-w-none w-5/6 mt-8">
-      <h1 class="text-center text-2xl sm:text-4xl mb-12">
-        Medyada Yeşil Mavi Hayat
-      </h1>
-      <div class="flex flex-row flex-wrap justify-center gap-8"">
+      <h1 class="text-center text-2xl sm:text-4xl mb-12">Medyada Yeşil Mavi Hayat</h1>
+      <div class="flex flex-row flex-wrap justify-center gap-8">
         {articles.map((article) => <ArticleCard article={article} />)}
       </div>
     </section>

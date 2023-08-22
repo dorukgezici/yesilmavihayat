@@ -13,10 +13,7 @@ export default function Carousel({ imgs }: { imgs: ImageMetadata[] }) {
       currentIndex--;
 
       // And swap it with the current element.
-      [imgs[currentIndex], imgs[randomIndex]] = [
-        imgs[randomIndex],
-        imgs[currentIndex],
-      ];
+      [imgs[currentIndex], imgs[randomIndex]] = [imgs[randomIndex], imgs[currentIndex]];
     }
   }, [imgs]);
 
@@ -24,12 +21,7 @@ export default function Carousel({ imgs }: { imgs: ImageMetadata[] }) {
     <div className="carousel carousel-center p-4 space-x-8">
       {imgs.map((img) => (
         <div key={img.src} className="carousel-item">
-          <img
-            src={img.src}
-            alt="Yeşil Mavi Hayat"
-            className="rounded-box w-auto h-[400px]"
-            height={400}
-          />
+          <img src={img.src} alt="Yeşil Mavi Hayat" className="rounded-box w-auto h-[400px]" height={400} />
         </div>
       ))}
     </div>

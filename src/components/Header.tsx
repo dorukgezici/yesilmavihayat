@@ -9,11 +9,7 @@ export default function Header() {
     <a key="medya" href="/medya">
       Medya
     </a>,
-    <a
-      key="buy"
-      href="https://destekdukkan.com/magaza/urun/yesil-mavi-hayat"
-      target="_blank"
-    >
+    <a key="buy" href="https://destekdukkan.com/magaza/urun/yesil-mavi-hayat" target="_blank">
       Satın Al
     </a>,
   ];
@@ -22,15 +18,10 @@ export default function Header() {
   return (
     <div className="navbar p-4">
       <div className="flex-1">
-        <a
-          href="/"
-          className="font-charmonman btn btn-ghost normal-case text-xl md:text-2xl"
-        >
+        <a href="/" className="font-charmonman btn btn-ghost normal-case text-xl md:text-2xl">
           Yeşil Mavi Hayat
         </a>
-        <span className="font-gotu hidden sm:block ml-4">
-          MELTEM SOĞUK STROPOLI
-        </span>
+        <span className="font-gotu hidden sm:block ml-4">MELTEM SOĞUK STROPOLI</span>
       </div>
       <div className="flex-none">
         <div className="block md:hidden">
@@ -43,12 +34,7 @@ export default function Header() {
                 viewBox="0 0 24 24"
                 stroke="currentColor"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16M4 18h7"
-                />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" />
               </svg>
             </label>
             <ul

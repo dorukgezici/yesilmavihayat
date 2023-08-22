@@ -16,9 +16,7 @@ export default function ArticleCard({ article }: { article: Article }) {
           <p>{article.description}</p>
           <div className="card-actions justify-end mt-4">
             <div className="badge badge-outline">#{article.source}</div>
-            <div className="badge badge-outline">
-              {new Date(article.pubDate).toLocaleDateString("tr")}
-            </div>
+            <div className="badge badge-outline">{new Date(article.pubDate).toLocaleDateString("tr")}</div>
           </div>
         </div>
       </div>
