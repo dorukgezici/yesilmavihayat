@@ -1,6 +1,7 @@
 ---
 import bidunyaImg from "../assets/img/media/bidunya.webp";
 import birgunImg from "../assets/img/media/birgun.jpeg";
+import ededbiyatHaberImg from "../assets/img/media/edebiyathaber.png";
 import gercekGundemImg from "../assets/img/media/gercekgundem.webp";
 import kisaDalgaImg from "../assets/img/media/kisadalga.png";
 import hakanBirolImg from "../assets/img/media/ropartaj-hakan-birol.jpeg";
@@ -8,7 +9,16 @@ import serbestGorusImg from "../assets/img/media/serbestgorus.webp";
 import ArticleCard from "../components/ArticleCard.astro";
 import Layout from "../layouts/Layout.astro";
 
-const articles = [
+const articles: Article[] = [
+  {
+    source: "Edebiyat Haber",
+    url: "https://www.edebiyathaber.net/meltem-soguk-stropoliden-yesil-mavi-hayat/",
+    img: ededbiyatHaberImg.src,
+    pubDate: "2023-08-22",
+    title: "Meltem Soğuk Stropoli’nin “Yeşil Mavi Hayat” adlı kitabı Destek Yayınları etiketiyle yayımlandı.",
+    description:
+      "“Sadece kendimi ve hayatı keşfetme yolculuğuna durmaksızın devam eden pek çok kişiden biriyim ve hayatın –eğer iyi okumayı öğrenebilirsek– bizlere tüm sorularının yanında, cevapları da birlikte sunduğuna inanıyorum.”",
+  },
   {
     source: "BirGün",
     url: "https://clips.medyatakip.com/pm/clip/LeVFmsA0QlF7JRMaDVzwp",
