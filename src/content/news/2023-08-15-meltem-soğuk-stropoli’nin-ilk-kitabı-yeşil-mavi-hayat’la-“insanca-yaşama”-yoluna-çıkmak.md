@@ -6,4 +6,5 @@ date: 2023-08-15T15:04:34.828Z
 title: "Meltem Soğuk Stropoli’nin ilk kitabı: Yeşil Mavi Hayat’la “insanca
   yaşama” yoluna çıkmak"
 ---
+
 Meltem Soğuk Stropoli Yeşil Mavi Hayat adlı kitabıyla yaşamın değeri ve insan olmak üzerine fikir yürütmeyi seven herkese kendilerinden ve düşüncelerinden bulabilecekleri bir izlek sunuyor.
