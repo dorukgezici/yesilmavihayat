@@ -5,8 +5,6 @@ img: /uploads/edebiyathaber.png
 date: 2023-08-22T14:56:33.993Z
 title: Meltem Soğuk Stropoli’nin “Yeşil Mavi Hayat” adlı kitabı Destek Yayınları
   etiketiyle yayımlandı.
-description: “Sadece kendimi ve hayatı keşfetme yolculuğuna durmaksızın devam
-  eden pek çok kişiden biriyim ve hayatın –eğer iyi okumayı öğrenebilirsek–
-  bizlere tüm sorularının yanında, cevapları da birlikte sunduğuna inanıyorum.”
 ---
-BODY
+
+“Sadece kendimi ve hayatı keşfetme yolculuğuna durmaksızın devam eden pek çok kişiden biriyim ve hayatın –eğer iyi okumayı öğrenebilirsek- bizlere tüm sorularının yanında, cevapları da birlikte sunduğuna inanıyorum.”
