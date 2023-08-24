@@ -1,3 +1,4 @@
+import netlify from "@astrojs/netlify/functions";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 import vercel from "@astrojs/vercel/serverless";
@@ -9,5 +10,5 @@ export default defineConfig({
   integrations: [tailwind(), sitemap()],
   experimental: { assets: true },
   output: "server",
-  adapter: vercel(),
+  adapter: process.env.VERCEL ? vercel() : netlify(),
 });
