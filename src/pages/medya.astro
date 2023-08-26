@@ -3,7 +3,7 @@ import { getCollection } from "astro:content";
 import ArticleCard from "../components/ArticleCard.astro";
 import Layout from "../layouts/Layout.astro";
 
-const articles = await getCollection("news");
+const articles = (await getCollection("news")).reverse();
 ---
 
 <Layout title="Medya | Yeşil Mavi Hayat">
@@ -11,7 +11,7 @@ const articles = await getCollection("news");
     <section class="prose max-w-none w-5/6 mt-8">
       <h1 class="text-center text-2xl sm:text-4xl mb-12">Medyada Yeşil Mavi Hayat</h1>
       <div class="flex flex-row flex-wrap justify-center gap-8">
-        {articles.reverse().map((article) => <ArticleCard article={article} />)}
+        {articles.map((article) => <ArticleCard article={article} />)}
       </div>
     </section>
   </main>
