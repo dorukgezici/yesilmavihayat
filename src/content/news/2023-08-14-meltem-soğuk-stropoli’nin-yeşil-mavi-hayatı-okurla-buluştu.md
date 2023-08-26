@@ -1,7 +1,7 @@
 ---
 source: Kısa Dalga
 url: https://kisadalga.net/haber/detay/meltem-soguk-stropolinin-yesil-mavi-hayati-okurla-bulustu_78573
-img: /uploads/kisadalga.png
+img: /uploads/kisadalga.webp
 date: 2023-08-14T15:06:17.101Z
 title: Meltem Soğuk Stropoli’nin 'Yeşil Mavi Hayat'ı okurla buluştu...
 ---

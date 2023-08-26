@@ -1,7 +1,7 @@
 ---
 source: BirGün
 url: https://clips.medyatakip.com/pm/clip/LeVFmsA0QlF7JRMaDVzwp
-img: /uploads/birgun.jpeg
+img: /uploads/birgun.webp
 date: 2023-08-20T15:02:35.501Z
 title: Filozoflarla yaşamın değeri ve insan olmak üzerine
 ---

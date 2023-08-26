@@ -1,7 +1,7 @@
 ---
 source: Fethiye Haber
 url: https://www.fethiyehaber.com/yazarlarla-roportaj-hakan-birol-soruyor-56/
-img: /uploads/ropartaj-hakan-birol.jpeg
+img: /uploads/ropartaj-hakan-birol.webp
 date: 2023-08-18T15:03:53.029Z
 title: Yazarlarla Röportaj / Hakan Birol Soruyor
 ---
