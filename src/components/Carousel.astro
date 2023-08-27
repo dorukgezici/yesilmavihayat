@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+
 interface Props {
   imgs: ImageMetadata[];
 }
@@ -24,7 +26,7 @@ while (currentIndex != 0) {
   {
     imgs.map((img) => (
       <div class="carousel-item">
-        <img src={img.src} alt="Yeşil Mavi Hayat" class="rounded-box w-auto h-[400px]" height={400} />
+        <Image src={img} alt="Yeşil Mavi Hayat" class="rounded-box h-[400px] object-cover" width={300} height={400} />
       </div>
     ))
   }
