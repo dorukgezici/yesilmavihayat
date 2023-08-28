@@ -1,4 +1,3 @@
-import netlify from "@astrojs/netlify/functions";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 import vercel from "@astrojs/vercel/serverless";
@@ -16,5 +15,5 @@ export default defineConfig({
     service: sharpImageService(),
   },
   output: "server",
-  adapter: process.env.VERCEL ? vercel() : netlify(),
+  adapter: vercel(),
 });
