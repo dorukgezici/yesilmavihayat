@@ -3,7 +3,7 @@ backend:
   repo: dorukgezici/yesilmavihayat
   branch: main
   site_domain: yesilmavihayat.com
-  base_url: https://yesilmavihayat.com
+  base_url: https://www.yesilmavihayat.com
   auth_endpoint: oauth
 
 local_backend: true
