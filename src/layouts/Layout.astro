@@ -2,6 +2,7 @@
 import "@fontsource-variable/inter";
 import "@fontsource/charmonman/700.css";
 import "@fontsource/gotu";
+import { ViewTransitions } from "astro:transitions";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 
@@ -12,7 +13,7 @@ interface Props {
 const { title } = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="tr">
   <head>
     <meta charset="UTF-8" />
@@ -25,6 +26,7 @@ const { title } = Astro.props;
     <link rel="sitemap" href="/sitemap-index.xml" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <ViewTransitions />
     <script async src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   </head>
   <body class="flex flex-col min-h-screen">
@@ -40,17 +42,16 @@ const { title } = Astro.props;
       gtag("js", new Date());
       gtag("config", "G-89WX1XCMH9");
     </script>
+    <script is:inline>
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", (user) => {
+          if (!user) {
+            window.netlifyIdentity.on("login", () => {
+              document.location.href = "/admin/";
+            });
+          }
+        });
+      }
+    </script>
   </body>
 </html>
-
-<script is:inline>
-if (window.netlifyIdentity) {
-  window.netlifyIdentity.on("init", (user) => {
-    if (!user) {
-      window.netlifyIdentity.on("login", () => {
-        document.location.href = "/admin/";
-      });
-    }
-  });
-}
-</script>
