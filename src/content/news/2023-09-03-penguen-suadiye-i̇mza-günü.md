@@ -6,3 +6,5 @@ date: 2023-09-03T15:13:47.397Z
 title: Penguen Suadiye İmza Günü
 ---
 14 Ekim 2023 16:00-17:30 arası Suadiye Penguen Kitabevi şubesinde görüşmek üzere!
+
+Adres: Bağdat Caddesi No: 408 34740 Suadiye/İstanbul
