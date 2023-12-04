@@ -27,7 +27,7 @@ dependencies:
     specifier: ^0.5.10
     version: 0.5.10(tailwindcss@3.3.5)
   astro:
-    specifier: ^3.6.1
+    specifier: ^3.6.4
     version: 3.6.4(typescript@5.3.2)
   astro-decap-cms-oauth:
     specifier: ^0.2.8
