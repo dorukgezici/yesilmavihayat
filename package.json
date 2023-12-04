@@ -19,7 +19,7 @@
     "@fontsource/charmonman": "^5.0.8",
     "@fontsource/gotu": "^5.0.8",
     "@tailwindcss/typography": "^0.5.10",
-    "astro": "^3.6.4",
+    "astro": "^3.6.1",
     "astro-decap-cms-oauth": "^0.2.8",
     "daisyui": "^4.4.18",
     "sharp": "^0.33.0",
