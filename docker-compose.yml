@@ -1,0 +1,50 @@
+version: "3.9"
+
+volumes:
+  remark42:
+    driver: nfs
+    driver_opts:
+      size: 10G
+
+services:
+  remark:
+    labels:
+      kr.ingress.8080: https://remark42.*
+    image: umputun/remark42:latest
+    container_name: "remark42"
+    hostname: "remark42"
+    restart: always
+
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "5"
+
+    # ports:
+    #  - "8080:8080"
+    #  - "8443:8443"
+
+    # env_file:
+    #   - .env
+
+    environment:
+      - REMARK_URL=https://remark42.ip3yy9jdg.1d.pt
+      - SITE=yesilmavihayat
+      - SECRET=bubirsecret
+      - AUTH_ANON=true
+      - DEBUG=true
+      # Enable it only for the initial comment import or for manual backups.
+      - AUTH_GOOGLE_CID
+      - AUTH_GOOGLE_CSEC
+      - AUTH_GITHUB_CID
+      - AUTH_GITHUB_CSEC
+      - AUTH_FACEBOOK_CID
+      - AUTH_FACEBOOK_CSEC
+      - AUTH_DISQUS_CID
+      - AUTH_DISQUS_CSEC
+      # Do not leave the server running with the ADMIN_PASSWD set if you don't have an intention
+      # to keep creating backups manually!
+      # - ADMIN_PASSWD=<your secret password>
+    volumes:
+      - remark42:/srv/var
