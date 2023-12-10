@@ -9,7 +9,6 @@ export default defineConfig({
   site: "https://yesilmavihayat.com",
   integrations: [tailwind(), sitemap(), decapCmsOauth()],
   output: "server",
-  server: { headers: { "Access-Control-Allow-Origin": "*" } },
   adapter: vercel(),
   image: { service: squooshImageService() },
 });
