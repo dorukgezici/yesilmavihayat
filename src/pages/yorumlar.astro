@@ -33,7 +33,6 @@ import img8 from "../assets/img/you/8.jpg";
 import img9 from "../assets/img/you/9.jpg";
 import Carousel from "../components/Carousel.astro";
 import Remark42 from "../components/Remark42.astro";
-// import Remark42 from "../components/Remark42.svelte";
 import Layout from "../layouts/Layout.astro";
 
 const imgs = [
@@ -74,13 +73,12 @@ const imgs = [
 
 <Layout title="Sizden Gelenler | Yeşil Mavi Hayat">
   <main class="flex flex-col items-center justify-between space-y-8">
-    <section class="flex flex-col">
+    <section class="flex flex-col w-full">
       <Carousel imgs={imgs} />
     </section>
 
     <section class="w-5/6">
       <Remark42 />
-      <!-- <Remark42 client:visible /> -->
     </section>
   </main>
 </Layout>
