@@ -8,7 +8,7 @@ import { defineConfig, squooshImageService } from "astro/config";
 export default defineConfig({
   site: "https://yesilmavihayat.com",
   integrations: [tailwind(), sitemap(), decapCmsOauth()],
-  output: "server",
-  adapter: vercel(),
+  output: "hybrid",
+  adapter: vercel({ webAnalytics: { enabled: true }, speedInsights: { enabled: true } }),
   image: { service: squooshImageService() },
 });
