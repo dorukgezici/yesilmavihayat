@@ -1,7 +1,7 @@
 ---
 source: yaziatolyesi.com
 url: https://yaziatolyesi.com/gunun-kitabi-yesil-mavi-hayat-meltem-soguk-stropoli.html
-img: /uploads/screenshot-2024-02-17-180503.png
+img: /uploads/screenshot-2024-02-17-180851.png
 date: 2024-02-17T17:29:15.906Z
 title: Günün Kitabı | Yeşil Mavi Hayat | Meltem Soğuk Stropoli
 ---
