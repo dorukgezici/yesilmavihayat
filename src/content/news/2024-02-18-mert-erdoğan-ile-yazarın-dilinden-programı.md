@@ -1,6 +1,6 @@
 ---
 source: Radyo Trafik
-url: https://www.radyotrafik.com/
+url: https://www.youtube.com/watch?v=aQmwMU-2Teg
 img: /uploads/img_5888.jpg
 date: 2024-02-02T13:54:00.000Z
 title: Mert Erdoğan ile Yazarın Dilinden Programı
