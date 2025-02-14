@@ -1,0 +1,21 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  story: CollectionEntry<"stories">;
+}
+
+const { story } = Astro.props;
+---
+
+<a href={`/oykuler/${story.slug}`} class="no-underline not-prose">
+  <div class="card w-96 bg-base-200 shadow-xl">
+    <div class="card-body prose">
+      <h2 class="card-title">{story.data.title}</h2>
+      <p>{story.data.excerpt}</p>
+      <div class="card-actions justify-end mt-4">
+        <div class="badge badge-outline">{new Date(story.data.date).toLocaleDateString("tr")}</div>
+      </div>
+    </div>
+  </div>
+</a>

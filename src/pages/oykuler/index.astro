@@ -1,0 +1,18 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import StoryCard from "../../components/StoryCard.astro";
+
+const stories = (await getCollection("stories")).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+
+<Layout title="Öyküler | Yeşil Mavi Hayat">
+  <main class="flex flex-col items-center justify-between space-y-8">
+    <section class="prose max-w-none w-5/6 mt-8">
+      <h1 class="text-center text-2xl sm:text-4xl mb-12">Öyküler</h1>
+      <div class="flex flex-row flex-wrap justify-center gap-8">
+        {stories.map((story) => <StoryCard story={story} />)}
+      </div>
+    </section>
+  </main>
+</Layout>
