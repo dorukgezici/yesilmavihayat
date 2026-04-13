@@ -15,17 +15,17 @@
     "@astrojs/sitemap": "^3.7.2",
     "@astrojs/tailwind": "^6.0.2",
     "@astrojs/vercel": "^10.0.4",
-    "@fontsource-variable/inter": "^5.1.0",
-    "@fontsource/charmonman": "^5.1.0",
-    "@fontsource/gotu": "^5.1.0",
-    "@tailwindcss/typography": "^0.5.15",
+    "@fontsource-variable/inter": "^5.2.8",
+    "@fontsource/charmonman": "^5.2.7",
+    "@fontsource/gotu": "^5.2.8",
+    "@tailwindcss/typography": "^0.5.19",
     "astro": "^6.1.6",
     "astro-decap-cms-oauth": "^0.5.2",
-    "daisyui": "^4.12.14",
-    "sharp": "^0.33.5",
+    "daisyui": "^4.12.24",
+    "sharp": "^0.34.5",
     "tailwindcss": "^3.4.14"
   },
   "devDependencies": {
-    "typescript": "^5.6.3"
+    "typescript": "^6.0.2"
   }
 }
