@@ -1,10 +1,11 @@
-import { defineCollection, z } from "astro:content";
+import { defineCollection } from "astro:content";
+import { z } from "astro/zod";
 
 const newsCollection = defineCollection({
   type: "content",
   schema: z.object({
     source: z.string(),
-    url: z.string().url(),
+    url: z.url(),
     img: z.string(),
     date: z.date(),
     title: z.string(),
