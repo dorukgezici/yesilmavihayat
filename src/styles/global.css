@@ -1,54 +1,253 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 @plugin "daisyui" {
-  themes: yesilmavihayat --default;
+    themes: yesilmavihayat --default;
 }
 @plugin "daisyui/theme" {
-  name: "yesilmavihayat";
-  default: true;
-  color-scheme: light;
+    name: "yesilmavihayat";
+    default: true;
+    color-scheme: light;
 
-  --color-base-100: rgb(186, 223, 222);
-  --color-base-200: rgb(166, 207, 206);
-  --color-base-300: rgb(146, 191, 190);
-  --color-base-content: #1e293b;
+    --color-base-100: rgb(186, 223, 222);
+    --color-base-200: rgb(166, 207, 206);
+    --color-base-300: rgb(146, 191, 190);
+    --color-base-content: #1e293b;
 
-  --color-primary: rgb(127, 193, 198);
-  --color-primary-content: #1e293b;
+    --color-primary: rgb(127, 193, 198);
+    --color-primary-content: #1e293b;
 
-  --color-secondary: #fef08a;
-  --color-secondary-content: #1e293b;
+    --color-secondary: #fef08a;
+    --color-secondary-content: #1e293b;
 
-  --color-accent: #14b8a6;
-  --color-accent-content: #ffffff;
+    --color-accent: #14b8a6;
+    --color-accent-content: #ffffff;
 
-  --color-neutral: #374151;
-  --color-neutral-content: #ffffff;
+    --color-neutral: #374151;
+    --color-neutral-content: #ffffff;
 
-  --color-info: #3abff8;
-  --color-info-content: #1e293b;
+    --color-info: #3abff8;
+    --color-info-content: #1e293b;
 
-  --color-success: #36d399;
-  --color-success-content: #1e293b;
+    --color-success: #36d399;
+    --color-success-content: #1e293b;
 
-  --color-warning: #fbbd23;
-  --color-warning-content: #1e293b;
+    --color-warning: #fbbd23;
+    --color-warning-content: #1e293b;
 
-  --color-error: #f87272;
-  --color-error-content: #1e293b;
+    --color-error: #f87272;
+    --color-error-content: #1e293b;
 
-  --radius-selector: 0.5rem;
-  --radius-field: 0.25rem;
-  --radius-box: 0.5rem;
-  --size-selector: 0.25rem;
-  --size-field: 0.25rem;
-  --border: 1px;
-  --depth: 1;
-  --noise: 0;
+    --radius-selector: 0.5rem;
+    --radius-field: 0.25rem;
+    --radius-box: 0.5rem;
+    --size-selector: 0.25rem;
+    --size-field: 0.25rem;
+    --border: 1px;
+    --depth: 1;
+    --noise: 0;
 }
 
 @theme {
-  --font-sans: "InterVariable", "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-charmonman: "Charmonman", ui-sans-serif, system-ui, sans-serif;
-  --font-gotu: "Gotu", ui-sans-serif, system-ui, sans-serif;
+    --font-sans: "InterVariable", "Inter", ui-sans-serif, system-ui, sans-serif;
+    --font-charmonman: "Charmonman", ui-sans-serif, system-ui, sans-serif;
+    --font-gotu: "Gotu", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Yeşil Mavi Hayat — shared design system
+   Watercolor-editorial language used across every page.
+   ═══════════════════════════════════════════════════════════════ */
+:root {
+    --paper: #faf7ef;
+    --aqua: #badfde;
+    --aqua-2: #a6cfce;
+    --ink: #16343a;
+    --ink-soft: #3f5a5f;
+    --teal: #0e7c7b;
+    --gold: #d99a2b;
+    --line: color-mix(in srgb, var(--ink) 14%, transparent);
+}
+
+main {
+    color: var(--ink);
+    overflow-x: clip;
+}
+
+/* ── Type primitives ── */
+.display {
+    font-family: var(--font-charmonman);
+    font-weight: 700;
+    /* Handwriting face with deep descenders — needs generous leading. */
+    line-height: 1.16;
+    letter-spacing: 0.01em;
+    color: var(--ink);
+}
+.kicker {
+    font-family: var(--font-gotu);
+    text-transform: uppercase;
+    letter-spacing: 0.28em;
+    font-size: 0.72rem;
+    color: var(--teal);
+    margin: 0 0 1.25rem;
+}
+.kicker--center {
+    text-align: center;
+}
+.h2 {
+    font-size: clamp(2.2rem, 5.5vw, 3.6rem);
+    margin: 0 0 1.5rem;
+}
+.h2.kicker--center,
+.kicker--center + .h2 {
+    text-align: center;
+}
+
+/* ── Layout primitives ── */
+.section {
+    padding: clamp(4rem, 10vw, 8rem) 1.5rem;
+}
+.section--tight {
+    padding-block: clamp(3rem, 7vw, 5.5rem);
+}
+.paper {
+    background: var(--paper);
+}
+.wrap {
+    max-width: 68rem;
+    margin-inline: auto;
+}
+.wrap--narrow {
+    max-width: 44rem;
+}
+
+/* ── Interior-page hero band (blends with the aqua header) ── */
+.pagehero {
+    position: relative;
+    padding: clamp(3.5rem, 7vw, 5.5rem) 1.5rem clamp(2.5rem, 5vw, 4rem);
+    background:
+        radial-gradient(120% 130% at 82% -10%, #cdeae6 0%, transparent 55%),
+        linear-gradient(180deg, var(--aqua) 0%, #cbe7e2 100%);
+}
+
+/* ── Interior-page header ── */
+.page-head {
+    text-align: center;
+    max-width: 46rem;
+    margin-inline: auto;
+}
+.page-head__title {
+    font-size: clamp(2.8rem, 8vw, 4.6rem);
+    margin: 0;
+}
+.page-head__intro {
+    margin: 1.35rem auto 0;
+    max-width: 40rem;
+    color: var(--ink-soft);
+    font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+    line-height: 1.7;
+}
+
+/* ── Reading prose ── */
+.prose-block p {
+    font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+    line-height: 1.75;
+    color: var(--ink-soft);
+    margin: 0 0 1.4rem;
+}
+
+/* ── Buttons ── */
+.btn-solid {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 0.95rem 1.6rem;
+    border-radius: 999px;
+    font-weight: 600;
+    text-decoration: none;
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+    box-shadow: 0 10px 30px -12px
+        color-mix(in srgb, var(--ink) 55%, transparent);
+}
+.btn-solid:hover {
+    background: #0c2a2f;
+    transform: translateY(-2px);
+    box-shadow: 0 18px 40px -14px
+        color-mix(in srgb, var(--ink) 60%, transparent);
+}
+.btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--ink);
+    padding: 0.95rem 1.2rem;
+    border-radius: 999px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid var(--line);
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+.btn-ghost:hover {
+    border-color: var(--ink);
+    background: color-mix(in srgb, var(--ink) 5%, transparent);
+    transform: translateY(-2px);
+}
+.tag {
+    background: var(--gold);
+    color: #3a2a06;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+}
+
+/* ── Small labels / chips ── */
+.chip {
+    font-family: var(--font-gotu);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.66rem;
+    color: var(--teal);
+}
+
+/* ── Animated underline link ── */
+.link-underline {
+    color: var(--ink);
+    text-decoration: none;
+    background-image: linear-gradient(var(--teal), var(--teal));
+    background-size: 0% 1.5px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition:
+        background-size 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+        color 0.2s ease;
+    padding-bottom: 2px;
+}
+.link-underline:hover {
+    color: var(--teal);
+    background-size: 100% 1.5px;
+}
+
+/* ── Scroll-reveal (screen only; content stays visible without JS,
+       under reduced-motion, and in print) ── */
+@media screen and (prefers-reduced-motion: no-preference) {
+    html.js .reveal {
+        opacity: 0;
+        transform: translateY(22px);
+        transition:
+            opacity 0.7s ease,
+            transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    html.js .reveal.is-in {
+        opacity: 1;
+        transform: none;
+    }
 }

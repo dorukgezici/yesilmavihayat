@@ -3,16 +3,48 @@ import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import StoryCard from "../../components/StoryCard.astro";
 
-const stories = (await getCollection("stories")).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const stories = (await getCollection("stories")).sort(
+    (a, b) => b.data.date.getTime() - a.data.date.getTime(),
+);
 ---
 
-<Layout title="Öyküler | Yeşil Mavi Hayat">
-  <main class="flex flex-col items-center justify-between space-y-8">
-    <section class="prose max-w-none w-5/6 mt-8">
-      <h1 class="text-center text-2xl sm:text-4xl mb-12">Öyküler</h1>
-      <div class="flex flex-row flex-wrap justify-center gap-8">
-        {stories.map((story) => <StoryCard story={story} />)}
-      </div>
-    </section>
-  </main>
+<Layout
+    title="Öyküler | Yeşil Mavi Hayat"
+    description="Meltem Soğuk Stropoli’nin kaleminden kısa öyküler; Yeşil Mavi Hayat’ın satır aralarından hikâyeler."
+>
+    <main>
+        <section class="pagehero">
+            <div class="wrap">
+                <header class="page-head">
+                    <p class="kicker kicker--center reveal">Öykülerim</p>
+                    <h1 class="display page-head__title reveal">Öyküler</h1>
+                    <p class="page-head__intro reveal">
+                        Yeşil Mavi Hayat’ın satır aralarından; Meltem Soğuk
+                        Stropoli’nin kaleminden kısa öyküler.
+                    </p>
+                </header>
+            </div>
+        </section>
+
+        <section class="section paper">
+            <div class="wrap">
+                <div class="story-grid">
+                    {stories.map((story) => <StoryCard story={story} />)}
+                </div>
+            </div>
+        </section>
+    </main>
 </Layout>
+
+<style>
+    .story-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 1.75rem;
+    }
+    @media (max-width: 640px) {
+        .story-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>

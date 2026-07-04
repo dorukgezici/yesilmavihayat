@@ -1,117 +1,221 @@
 ---
 import Layout from "../layouts/Layout.astro";
+
+// Esin ve bilgi kaynakları — "Author / Title" per line.
+const raw = [
+    "Ahmet Soysal / Bir Ekolojistin Not Defteri",
+    "Alain de Botton / Felsefenin Tesellisi",
+    "Alan Watts / Mutluluğun Anlamı",
+    "Ali Ayten / Tasavvuf Psikolojisi",
+    "Antonio Damasio / Descartes’ın Yanılgısı",
+    "Aristoteles / Nikomakhos’a Etik",
+    "Arthur Schopenhauer / İnsan Doğası Üzerine",
+    "Arthur Schopenhauer / Yaşam Bilgeliği Üzerine Aforizmalar",
+    "Aslı Perker / Hoş Geldin Yabancı, Burada En Büyük Amacımız Mutluluktur-Epikür",
+    "Aslı Perker / Kendisinin Efendisi Olmayan Hiç Kimse Özgür Değildir-Epiktetos",
+    "Bill Gates / İklim Felaketini Nasıl Önleriz",
+    "Carl Sagan / Kozmos",
+    "Carl Sagan / Soluk Mavi Nokta",
+    "Cemalnur Sargut / Allah’ıma Sefere Çıktım",
+    "Charles Darwin / İnsan ve Hayvanlarda Duyguların İfade Edilmesi",
+    "Charles Darwin / İnsanın Türeyişi",
+    "Charles Darwin / Türlerin Kökeni",
+    "Christopher Peterson-Martin Seligman / Character Strengths and Virtues: A Handbook and Classification",
+    "Cicero / Dostluk Üzerine-De Amicitia",
+    "Cicero / Yaşlı Cato ve Yaşlılık Üzerine",
+    "Damon Young / Bahçede Felsefe",
+    "Dan Buettner / Mavi Bölgeler",
+    "Daniel Chamovitz / Bitkilerin Bildikleri",
+    "Doğan Cüceloğlu / Var mısın? Güçlü Bir Yaşam İçin Öneriler",
+    "Dr. Murat Kınıkoğlu / Vegan Beslenme",
+    "Edward Osborne Wilson / Biophilia",
+    "Edward Osborne Wilson / Doğanın Gizli Bahçesi",
+    "Emanuele Coccia / Bitkilerin Yaşamı-Bir Karışım Metafiziği",
+    "Engin Geçtan / Hayat",
+    "Engin Geçtan / İnsan Olmak",
+    "Engin Geçtan / Rastgele Ben",
+    "Epiktetos / İçsel Huzur İyi Yaşamın Kapısını Açar",
+    "Erich Fromm / İnsandaki Yıkıcılığın Kökenleri",
+    "Farabi / Mutluluğun Kazanılması",
+    "Ferhat Jak İçöz / Kendin Olmanın Dayanılmaz Hafifliği",
+    "Feza Karakaş / Mutluluk Projesi",
+    "Francis Bacon / Denemeler",
+    "Franz Kafka / Dava",
+    "Frederic Gros / Yürümenin Felsefesi",
+    "Friedrich Nietzsche / Böyle Buyurdu Zerdüşt",
+    "George Monbiot / Yaban Yaşam",
+    "Gülin Yücel-Levent Kurnaz / Yeni Gerçeğimiz Sürdürülebilirlik",
+    "Gündüz Vassaf / Cehenneme Övgü",
+    "Halil Cibran / Ermiş",
+    "Hector Garcia-Francesc Miralles / Ikigai",
+    "Henry David Thoreau / Nerede ve Ne İçin Yaşadım",
+    "Henry David Thoreau / Walden-Ormanda Yaşam",
+    "Henry David Thoreau / Yürümek",
+    "Hermann Hesse / Ağaçlar",
+    "Hermann Hesse / Öldürmeyeceksin",
+    "H. G. Wells / Zaman Makinesi",
+    "İhsan Fazlıoğlu / Kendini Aramak",
+    "İlber Ortaylı / Bir Ömür Nasıl Yaşanır",
+    "İlber Ortaylı / İnsan Geleceğini Nasıl Kurar",
+    "James Joyce / Ulysses",
+    "Jason Hickel / Çoğu Zarar Azı Karar-Dünyayı Küçülme Kurtaracak",
+    "Jean-Jacques Rousseau / Eşitsizliğin Kökeni",
+    "Jean-Jacques Rousseau / Yalnız Gezer’in Düşleri",
+    "Jonathan Balcombe / Balıkların Bildikleri",
+    "Jonathan Safran Foer / Hayvan Yemek",
+    "John Fowles / Ağaçlar",
+    "Kiraz Özdoğan, M. Fatih Tatari, Ali Bilgin / İnsan Hayvan ve Ötesi",
+    "Kolektif-Editör Samet Kılıç / Halkbilimi Bağlamında Türkiye’de Yeme-İçme Kültürü",
+    "Laozi / Yol ve Erdem",
+    "Marc Bekoff / Hayvanların Duygusal Dünyası",
+    "Marcus Aurelius / Kendime Düşünceler",
+    "Matt Haig / İnsanlar",
+    "Matthieu Ricard / Mutluluğa Övgü",
+    "Maureen Gaffney / Your One Wild and Precious Life",
+    "Mesud Topal / Var mısın ki Yok Olmaktan KorkuyorsunFarabi",
+    "Metehan Tanyıldız / İlim Anavatanımızdır, Cehalet ise Yabancı Bir Yer-İbni Rüşd",
+    "Michel Serres / Doğayla Sözleşme",
+    "Mihaly Csikszentmihalyi / Akış-Mutluluk Bilimi",
+    "Montaigne / Denemeler",
+    "Nermi Uygur / Yaşama Felsefesi",
+    "Norman Hampson / Aydınlanma Çağı",
+    "Öykü Yaman, Emine Aksoydan / Sürdürülebilir Yaşam Rehberi",
+    "Özlem Küskü / Dışa Bakan Rüya Görür İçe Bakan Uyanır-Carl Gustav Jung",
+    "Peter Singer / Hayvan Özgürleşmesi",
+    "Peter Singer / Neden Vegan",
+    "Peter Wohlleben / Ağaçların Gizli Yaşamı",
+    "Peter Wohlleben / Hayvanların Gizli Yaşamı",
+    "Platon / Diyaloglar",
+    "Ralph Waldo Emerson / Doğa",
+    "Ralph Waldo Emerson / Nefse İtimat",
+    "Richard Louv / Doğadaki Son Çocuk",
+    "Sait Faik Abasıyanık / Son Kuşlar",
+    "Samuel Beckett / Aşksız İlişkiler",
+    "Seneca / Yaşamın Kısalığı Üzerine",
+    "Sinan Canan / İFA-İnsanın Fabrika Ayarları-1. Kitap",
+    "Stefan Zweig / Montaigne: Her Şeyin Birazı, Hiçbir Şeyin Hepsi",
+    "Stefano Mancuso / Bitki Ulusu",
+    "Stuart Walton / A Natural History of Human Emotions",
+    "Viktor Emil Frankl / İnsanın Anlam Arayışı",
+    "Walther Kranz / Antik Felsefe",
+    "Wilhelm Schmid / Dokunmak Üstüne",
+    "Wilhelm Schmid / Kendiyle Dost Olmak",
+    "Wilhelm Schmid / Mutsuz Olmak: Bir Yüreklendirme",
+    "Wilhelm Schmid / Sakin Olmak",
+    "Yaşar Kemal / İnce Memed 3",
+    "Yuval Noah Harari / Hayvanlardan Tanrılara-Sapiens",
+    "Zülal Kalkandelen / Vegan Devrimi ve Hayvan Özgürlüğü",
+    "Zygmunt Bauman / Yaşam Sanatı",
+];
+
+const entries = raw.map((line) => {
+    const i = line.indexOf(" / ");
+    return i === -1
+        ? { author: line, work: "" }
+        : { author: line.slice(0, i), work: line.slice(i + 3) };
+});
+
+// Already alphabetical by author — group by first letter (Turkish casing).
+const groups: { letter: string; items: typeof entries }[] = [];
+for (const e of entries) {
+    const letter = e.author.charAt(0).toLocaleUpperCase("tr");
+    let group = groups.find((g) => g.letter === letter);
+    if (!group) {
+        group = { letter, items: [] };
+        groups.push(group);
+    }
+    group.items.push(e);
+}
 ---
 
-<Layout title="Okuma Listesi | Yeşil Mavi Hayat">
-  <main class="flex flex-col items-center justify-between space-y-8">
-    <section class="prose w-5/6 mt-8">
-      <h1 class="text-center">Okuma Listesi</h1>
-      <h2 class="-mt-2 text-center">Esin ve Bilgi Kaynakları</h2>
-      <ul>
-        <li>Ahmet Soysal / Bir Ekolojistin Not Defteri</li>
-        <li>Alain de Botton / Felsefenin Tesellisi</li>
-        <li>Alan Watts / Mutluluğun Anlamı</li>
-        <li>Ali Ayten / Tasavvuf Psikolojisi</li>
-        <li>Antonio Damasio / Descartes’ın Yanılgısı</li>
-        <li>Aristoteles / Nikomakhos’a Etik</li>
-        <li>Arthur Schopenhauer / İnsan Doğası Üzerine</li>
-        <li>Arthur Schopenhauer / Yaşam Bilgeliği Üzerine Aforizmalar</li>
-        <li>Aslı Perker / Hoş Geldin Yabancı, Burada En Büyük Amacımız Mutluluktur-Epikür</li>
-        <li>Aslı Perker / Kendisinin Efendisi Olmayan Hiç Kimse Özgür Değildir-Epiktetos</li>
-        <li>Bill Gates / İklim Felaketini Nasıl Önleriz</li>
-        <li>Carl Sagan / Kozmos</li>
-        <li>Carl Sagan / Soluk Mavi Nokta</li>
-        <li>Cemalnur Sargut / Allah’ıma Sefere Çıktım</li>
-        <li>Charles Darwin / İnsan ve Hayvanlarda Duyguların İfade Edilmesi</li>
-        <li>Charles Darwin / İnsanın Türeyişi</li>
-        <li>Charles Darwin / Türlerin Kökeni</li>
-        <li>Christopher Peterson-Martin Seligman / Character Strengths and Virtues: A Handbook and Classification</li>
-        <li>Cicero / Dostluk Üzerine-De Amicitia</li>
-        <li>Cicero / Yaşlı Cato ve Yaşlılık Üzerine</li>
-        <li>Damon Young / Bahçede Felsefe</li>
-        <li>Dan Buettner / Mavi Bölgeler</li>
-        <li>Daniel Chamovitz / Bitkilerin Bildikleri</li>
-        <li>Doğan Cüceloğlu / Var mısın? Güçlü Bir Yaşam İçin Öneriler</li>
-        <li>Dr. Murat Kınıkoğlu / Vegan Beslenme</li>
-        <li>Edward Osborne Wilson / Biophilia</li>
-        <li>Edward Osborne Wilson / Doğanın Gizli Bahçesi</li>
-        <li>Emanuele Coccia / Bitkilerin Yaşamı-Bir Karışım Metafiziği</li>
-        <li>Engin Geçtan / Hayat</li>
-        <li>Engin Geçtan / İnsan Olmak</li>
-        <li>Engin Geçtan / Rastgele Ben</li>
-        <li>Epiktetos / İçsel Huzur İyi Yaşamın Kapısını Açar</li>
-        <li>Erich Fromm / İnsandaki Yıkıcılığın Kökenleri</li>
-        <li>Farabi / Mutluluğun Kazanılması</li>
-        <li>Ferhat Jak İçöz / Kendin Olmanın Dayanılmaz Hafifliği</li>
-        <li>Feza Karakaş / Mutluluk Projesi</li>
-        <li>Francis Bacon / Denemeler</li>
-        <li>Franz Kafka / Dava</li>
-        <li>Frederic Gros / Yürümenin Felsefesi</li>
-        <li>Friedrich Nietzsche / Böyle Buyurdu Zerdüşt</li>
-        <li>George Monbiot / Yaban Yaşam</li>
-        <li>Gülin Yücel-Levent Kurnaz / Yeni Gerçeğimiz Sürdürülebilirlik</li>
-        <li>Gündüz Vassaf / Cehenneme Övgü</li>
-        <li>Halil Cibran / Ermiş</li>
-        <li>Hector Garcia-Francesc Miralles / Ikigai</li>
-        <li>Henry David Thoreau / Nerede ve Ne İçin Yaşadım</li>
-        <li>Henry David Thoreau / Walden-Ormanda Yaşam</li>
-        <li>Henry David Thoreau / Yürümek</li>
-        <li>Hermann Hesse / Ağaçlar</li>
-        <li>Hermann Hesse / Öldürmeyeceksin</li>
-        <li>H. G. Wells / Zaman Makinesi</li>
-        <li>İhsan Fazlıoğlu / Kendini Aramak</li>
-        <li>İlber Ortaylı / Bir Ömür Nasıl Yaşanır</li>
-        <li>İlber Ortaylı / İnsan Geleceğini Nasıl Kurar</li>
-        <li>James Joyce / Ulysses</li>
-        <li>Jason Hickel / Çoğu Zarar Azı Karar-Dünyayı Küçülme Kurtaracak</li>
-        <li>Jean-Jacques Rousseau / Eşitsizliğin Kökeni</li>
-        <li>Jean-Jacques Rousseau / Yalnız Gezer’in Düşleri</li>
-        <li>Jonathan Balcombe / Balıkların Bildikleri</li>
-        <li>Jonathan Safran Foer / Hayvan Yemek</li>
-        <li>John Fowles / Ağaçlar</li>
-        <li>Kiraz Özdoğan, M. Fatih Tatari, Ali Bilgin / İnsan Hayvan ve Ötesi</li>
-        <li>Kolektif-Editör Samet Kılıç / Halkbilimi Bağlamında Türkiye’de Yeme-İçme Kültürü</li>
-        <li>Laozi / Yol ve Erdem</li>
-        <li>Marc Bekoff / Hayvanların Duygusal Dünyası</li>
-        <li>Marcus Aurelius / Kendime Düşünceler</li>
-        <li>Matt Haig / İnsanlar</li>
-        <li>Matthieu Ricard / Mutluluğa Övgü</li>
-        <li>Maureen Gaffney / Your One Wild and Precious Life</li>
-        <li>Mesud Topal / Var mısın ki Yok Olmaktan KorkuyorsunFarabi</li>
-        <li>Metehan Tanyıldız / İlim Anavatanımızdır, Cehalet ise Yabancı Bir Yer-İbni Rüşd</li>
-        <li>Michel Serres / Doğayla Sözleşme</li>
-        <li>Mihaly Csikszentmihalyi / Akış-Mutluluk Bilimi</li>
-        <li>Montaigne / Denemeler</li>
-        <li>Nermi Uygur / Yaşama Felsefesi</li>
-        <li>Norman Hampson / Aydınlanma Çağı</li>
-        <li>Öykü Yaman, Emine Aksoydan / Sürdürülebilir Yaşam Rehberi</li>
-        <li>Özlem Küskü / Dışa Bakan Rüya Görür İçe Bakan Uyanır-Carl Gustav Jung</li>
-        <li>Peter Singer / Hayvan Özgürleşmesi</li>
-        <li>Peter Singer / Neden Vegan</li>
-        <li>Peter Wohlleben / Ağaçların Gizli Yaşamı</li>
-        <li>Peter Wohlleben / Hayvanların Gizli Yaşamı</li>
-        <li>Platon / Diyaloglar</li>
-        <li>Ralph Waldo Emerson / Doğa</li>
-        <li>Ralph Waldo Emerson / Nefse İtimat</li>
-        <li>Richard Louv / Doğadaki Son Çocuk</li>
-        <li>Sait Faik Abasıyanık / Son Kuşlar</li>
-        <li>Samuel Beckett / Aşksız İlişkiler</li>
-        <li>Seneca / Yaşamın Kısalığı Üzerine</li>
-        <li>Sinan Canan / İFA-İnsanın Fabrika Ayarları-1. Kitap</li>
-        <li>Stefan Zweig / Montaigne: Her Şeyin Birazı, Hiçbir Şeyin Hepsi</li>
-        <li>Stefano Mancuso / Bitki Ulusu</li>
-        <li>Stuart Walton / A Natural History of Human Emotions</li>
-        <li>Viktor Emil Frankl / İnsanın Anlam Arayışı</li>
-        <li>Walther Kranz / Antik Felsefe</li>
-        <li>Wilhelm Schmid / Dokunmak Üstüne</li>
-        <li>Wilhelm Schmid / Kendiyle Dost Olmak</li>
-        <li>Wilhelm Schmid / Mutsuz Olmak: Bir Yüreklendirme</li>
-        <li>Wilhelm Schmid / Sakin Olmak</li>
-        <li>Yaşar Kemal / İnce Memed 3</li>
-        <li>Yuval Noah Harari / Hayvanlardan Tanrılara-Sapiens</li>
-        <li>Zülal Kalkandelen / Vegan Devrimi ve Hayvan Özgürlüğü</li>
-        <li>Zygmunt Bauman / Yaşam Sanatı</li>
-      </ul>
-    </section>
-  </main>
+<Layout
+    title="Okuma Listesi | Yeşil Mavi Hayat"
+    description="Yeşil Mavi Hayat’a ilham veren esin ve bilgi kaynakları: felsefeden doğaya, psikolojiden edebiyata bir okuma listesi."
+>
+    <main>
+        <section class="pagehero">
+            <div class="wrap">
+                <header class="page-head">
+                    <p class="kicker kicker--center reveal">Okuma Listesi</p>
+                    <h1 class="display page-head__title reveal">
+                        Esin ve Bilgi Kaynakları
+                    </h1>
+                    <p class="page-head__intro reveal">
+                        Yeşil Mavi Hayat’ı besleyen {entries.length} kitap; felsefeden
+                        doğaya, psikolojiden edebiyata uzanan bir okuma yolculuğu.
+                    </p>
+                </header>
+            </div>
+        </section>
+
+        <section class="section paper">
+            <div class="wrap">
+                <div class="biblio">
+                    {
+                        groups.map((group) => (
+                            <section class="biblio__group reveal">
+                                <h2 class="biblio__letter display">
+                                    {group.letter}
+                                </h2>
+                                <ul class="biblio__list">
+                                    {group.items.map((it) => (
+                                        <li>
+                                            <span class="biblio__author">
+                                                {it.author}
+                                            </span>
+                                            {it.work && (
+                                                <span class="biblio__work">
+                                                    {it.work}
+                                                </span>
+                                            )}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </section>
+                        ))
+                    }
+                </div>
+            </div>
+        </section>
+    </main>
 </Layout>
+
+<style>
+    .biblio {
+        columns: 300px;
+        column-gap: 2.75rem;
+    }
+    .biblio__group {
+        break-inside: avoid;
+        margin-bottom: 2.5rem;
+    }
+    .biblio__letter {
+        font-size: 2.4rem;
+        line-height: 1;
+        color: var(--teal);
+        margin: 0 0 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid var(--line);
+    }
+    .biblio__list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.9rem;
+    }
+    .biblio__author {
+        display: block;
+        font-weight: 600;
+        font-size: 0.95rem;
+        line-height: 1.35;
+        color: var(--ink);
+    }
+    .biblio__work {
+        display: block;
+        font-size: 0.9rem;
+        line-height: 1.4;
+        color: var(--ink-soft);
+    }
+</style>

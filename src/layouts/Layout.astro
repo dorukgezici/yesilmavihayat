@@ -4,29 +4,54 @@ import "@fontsource/charmonman/700.css";
 import "@fontsource/gotu";
 import "../styles/global.css";
 import { ClientRouter } from "astro:transitions";
+import coverImg from "../assets/img/cover.webp";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 
 interface Props {
     title: string;
+    description?: string;
+    image?: string;
 }
 
-const { title } = Astro.props;
+const {
+    title,
+    description = "Meltem Soğuk Stropoli’nin 2023 Ağustos'da çıkan kitabı Yeşil Mavi Hayat (Destek Yayınları) hakkında tüm bilgiler",
+    image,
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL(image ?? coverImg.src, Astro.site);
 ---
 
 <!doctype html>
 <html lang="tr">
     <head>
         <meta charset="UTF-8" />
-        <meta
-            name="description"
-            content="Meltem Soğuk Stropoli’nin 2023 Ağustos'da çıkan kitabı Yeşil Mavi Hayat (Destek Yayınları) hakkında tüm bilgiler"
-        />
+        <script is:inline>
+            document.documentElement.classList.add("js");
+        </script>
+        <meta name="description" content={description} />
         <meta name="viewport" content="width=device-width" />
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="sitemap" href="/sitemap-index.xml" />
+        <link rel="canonical" href={canonical} />
         <meta name="generator" content={Astro.generator} />
         <title>{title}</title>
+
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Yeşil Mavi Hayat" />
+        <meta property="og:locale" content="tr_TR" />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={canonical} />
+        <meta property="og:image" content={ogImage} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={ogImage} />
+
+        <slot name="head" />
         <ClientRouter />
     </head>
     <body class="flex flex-col min-h-screen">
@@ -55,6 +80,43 @@ const { title } = Astro.props;
                     }
                 });
             }
+        </script>
+        <script>
+            // Site-wide scroll-reveal. Content is visible by default; this only
+            // adds the enter animation when JS + motion are available.
+            function initReveals() {
+                const els = document.querySelectorAll(".reveal:not(.is-in)");
+                if (!els.length) return;
+                if (!("IntersectionObserver" in window)) {
+                    els.forEach((el) => el.classList.add("is-in"));
+                    return;
+                }
+                const io = new IntersectionObserver(
+                    (entries, obs) => {
+                        entries.forEach((entry) => {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add("is-in");
+                                obs.unobserve(entry.target);
+                            }
+                        });
+                    },
+                    { rootMargin: "0px 0px -10% 0px", threshold: 0.12 },
+                );
+                els.forEach((el) => io.observe(el));
+                setTimeout(() => {
+                    document
+                        .querySelectorAll(".reveal:not(.is-in)")
+                        .forEach((el) => {
+                            if (
+                                el.getBoundingClientRect().top <
+                                window.innerHeight
+                            )
+                                el.classList.add("is-in");
+                        });
+                }, 3000);
+            }
+            initReveals();
+            document.addEventListener("astro:page-load", initReveals);
         </script>
     </body>
 </html>

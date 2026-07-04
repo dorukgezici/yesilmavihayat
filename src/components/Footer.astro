@@ -1,4 +1,113 @@
-<footer class="flex justify-center p-8 pt-16 mt-auto">
-  © 2023 |&nbsp;<a href="mailto:msoguk@yahoo.com">msoguk@yahoo.com</a>&nbsp;|&nbsp;
-  <a href="https://doruk.gezici.me" target="_blank">DGtech</a>
+---
+const buyHref = "https://destekdukkan.com/magaza/urun/yesil-mavi-hayat";
+const links = [
+    { href: "/yorumlar", text: "Sizden Gelenler" },
+    { href: "/okuma-listesi", text: "Okuma Listesi" },
+    { href: "/oykuler", text: "Öykülerim" },
+    { href: "/medya", text: "Medya" },
+    { href: buyHref, text: "Satın Al", external: true },
+];
+---
+
+<footer class="site-foot">
+    <div class="site-foot__top">
+        <div class="site-foot__brand">
+            <a href="/" class="site-foot__name">Yeşil Mavi Hayat</a>
+            <p class="site-foot__tag">
+                Meltem Soğuk Stropoli · Destek Yayınları, 2023
+            </p>
+        </div>
+        <nav class="site-foot__nav" aria-label="Alt menü">
+            {
+                links.map((link) => (
+                    <a
+                        href={link.href}
+                        target={link.external ? "_blank" : undefined}
+                        rel={link.external ? "noopener" : undefined}
+                    >
+                        {link.text}
+                    </a>
+                ))
+            }
+        </nav>
+    </div>
+
+    <div class="site-foot__bar">
+        <span>© 2026 Yeşil Mavi Hayat</span>
+        <a href="mailto:msoguk@yahoo.com">msoguk@yahoo.com</a>
+        <span>
+            Tasarım <a
+                href="https://doruk.gezici.me"
+                target="_blank"
+                rel="noopener">DGtech</a
+            >
+        </span>
+    </div>
 </footer>
+
+<style>
+    .site-foot {
+        margin-top: auto;
+        background: var(--ink);
+        color: color-mix(in srgb, var(--paper) 80%, transparent);
+        padding: clamp(3rem, 6vw, 4.5rem) 1.5rem 2rem;
+    }
+    .site-foot__top {
+        max-width: 68rem;
+        margin-inline: auto;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 2rem;
+        padding-bottom: 2.5rem;
+        border-bottom: 1px solid
+            color-mix(in srgb, var(--paper) 16%, transparent);
+    }
+    .site-foot__name {
+        font-family: var(--font-charmonman);
+        font-weight: 700;
+        font-size: clamp(1.8rem, 4vw, 2.4rem);
+        color: var(--paper);
+        text-decoration: none;
+    }
+    .site-foot__tag {
+        margin: 0.5rem 0 0;
+        font-size: 0.85rem;
+        letter-spacing: 0.02em;
+    }
+    .site-foot__nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        align-items: center;
+    }
+    .site-foot__nav a {
+        font-family: var(--font-gotu);
+        font-size: 0.72rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: color-mix(in srgb, var(--paper) 80%, transparent);
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+    .site-foot__nav a:hover {
+        color: #9fdad3;
+    }
+    .site-foot__bar {
+        max-width: 68rem;
+        margin: 1.75rem auto 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 0.75rem 1.5rem;
+        font-size: 0.78rem;
+        color: color-mix(in srgb, var(--paper) 60%, transparent);
+    }
+    .site-foot__bar a {
+        color: color-mix(in srgb, var(--paper) 72%, transparent);
+        text-decoration: none;
+    }
+    .site-foot__bar a:hover {
+        color: #9fdad3;
+    }
+</style>

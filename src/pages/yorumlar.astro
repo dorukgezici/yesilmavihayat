@@ -1,84 +1,98 @@
 ---
-import img1 from "../assets/img/you/1.jpg";
-import img10 from "../assets/img/you/10.jpg";
-import img11 from "../assets/img/you/11.jpg";
-import img12 from "../assets/img/you/12.jpg";
-import img13 from "../assets/img/you/13.jpg";
-import img14 from "../assets/img/you/14.jpg";
-import img15 from "../assets/img/you/15.jpg";
-import img16 from "../assets/img/you/16.jpg";
-import img17 from "../assets/img/you/17.jpg";
-import img18 from "../assets/img/you/18.jpg";
-import img19 from "../assets/img/you/19.jpg";
-import img2 from "../assets/img/you/2.jpg";
-import img20 from "../assets/img/you/20.jpg";
-import img21 from "../assets/img/you/21.jpg";
-import img22 from "../assets/img/you/22.jpg";
-import img23 from "../assets/img/you/23.jpg";
-import img24 from "../assets/img/you/24.jpg";
-import img25 from "../assets/img/you/25.jpg";
-import img26 from "../assets/img/you/26.jpg";
-import img27 from "../assets/img/you/27.jpg";
-import img28 from "../assets/img/you/28.jpg";
-import img29 from "../assets/img/you/29.jpg";
-import img3 from "../assets/img/you/3.jpg";
-import img30 from "../assets/img/you/30.jpg";
-import img31 from "../assets/img/you/31.jpg";
-import img32 from "../assets/img/you/32.jpg";
-import img4 from "../assets/img/you/4.jpg";
-import img5 from "../assets/img/you/5.jpg";
-import img6 from "../assets/img/you/6.jpg";
-import img7 from "../assets/img/you/7.jpg";
-import img8 from "../assets/img/you/8.jpg";
-import img9 from "../assets/img/you/9.jpg";
-import Carousel from "../components/Carousel.astro";
-import Remark42 from "../components/Remark42.astro";
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
+import Remark42 from "../components/Remark42.astro";
 
-const imgs = [
-  img2,
-  img26,
-  img4,
-  img22,
-  img7,
-  img23,
-  img8,
-  img29,
-  img10,
-  img5,
-  img28,
-  img3,
-  img9,
-  img1,
-  img6,
-  img31,
-  img25,
-  img11,
-  img12,
-  img30,
-  img13,
-  img14,
-  img24,
-  img18,
-  img15,
-  img16,
-  img17,
-  img19,
-  img20,
-  img21,
-  img27,
-  img32,
-];
+const modules = import.meta.glob<{ default: ImageMetadata }>(
+    "../assets/img/you/*.jpg",
+    { eager: true },
+);
+const photos = Object.entries(modules)
+    .sort((a, b) => a[0].localeCompare(b[0], undefined, { numeric: true }))
+    .map(([, mod]) => mod.default);
 ---
 
-<Layout title="Sizden Gelenler | Yeşil Mavi Hayat">
-  <main class="flex flex-col items-center justify-between space-y-8">
-    <section class="flex flex-col w-full">
-      <Carousel imgs={imgs} />
-    </section>
+<Layout
+    title="Sizden Gelenler | Yeşil Mavi Hayat"
+    description="Okurların Yeşil Mavi Hayat ile paylaştığı kareler ve düşünceler."
+>
+    <main>
+        <section class="pagehero">
+            <div class="wrap">
+                <header class="page-head">
+                    <p class="kicker kicker--center reveal">Sizden Gelenler</p>
+                    <h1 class="display page-head__title reveal">
+                        Okurların kareleri
+                    </h1>
+                    <p class="page-head__intro reveal">
+                        Kitabevlerinden, evlerden, yolculuklardan… Yeşil Mavi
+                        Hayat’ı okurların objektifinden görmek en güzeli.
+                    </p>
+                </header>
+            </div>
+        </section>
 
-    <section class="w-5/6">
-      <Remark42 />
-    </section>
-  </main>
+        <section class="section paper">
+            <div class="wrap">
+                <div
+                    class="ygallery"
+                    role="group"
+                    aria-label="Okur fotoğrafları"
+                >
+                    {
+                        photos.map((photo) => (
+                            <figure class="ygallery__item reveal">
+                                <Image
+                                    src={photo}
+                                    alt="Bir okurun Yeşil Mavi Hayat karesi"
+                                    width={420}
+                                    loading="lazy"
+                                />
+                            </figure>
+                        ))
+                    }
+                </div>
+            </div>
+        </section>
+
+        <section class="section--tight comments">
+            <div class="wrap wrap--narrow">
+                <h2 class="display h2 reveal">Siz ne düşünüyorsunuz?</h2>
+                <div class="reveal"><Remark42 /></div>
+            </div>
+        </section>
+    </main>
 </Layout>
+
+<style>
+    .ygallery {
+        columns: 220px;
+        column-gap: 1rem;
+    }
+    .ygallery__item {
+        break-inside: avoid;
+        margin: 0 0 1rem;
+        border-radius: 14px;
+        overflow: hidden;
+        background: var(--aqua-2);
+        box-shadow: 0 14px 34px -20px rgba(16, 52, 58, 0.5);
+    }
+    .ygallery__item :global(img) {
+        display: block;
+        width: 100%;
+        height: auto;
+        transition: transform 0.4s ease;
+    }
+    .ygallery__item:hover :global(img) {
+        transform: scale(1.04);
+    }
+    .comments {
+        padding-inline: 1.5rem;
+        text-align: center;
+    }
+    .comments :global(#remark42) {
+        margin-top: 2rem;
+        text-align: left;
+    }
+</style>

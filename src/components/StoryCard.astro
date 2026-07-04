@@ -6,18 +6,55 @@ interface Props {
 }
 
 const { story } = Astro.props;
+const formatted = new Date(story.data.date).toLocaleDateString("tr", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+});
 ---
 
-<a href={`/oykuler/${story.id}`} class="no-underline not-prose">
-    <div class="card w-96 bg-base-200 shadow-xl">
-        <div class="card-body prose">
-            <h2 class="card-title">{story.data.title}</h2>
-            <p>{story.data.excerpt}</p>
-            <div class="card-actions justify-end mt-4">
-                <div class="badge badge-outline">
-                    {new Date(story.data.date).toLocaleDateString("tr")}
-                </div>
-            </div>
-        </div>
-    </div>
+<a href={`/oykuler/${story.id}`} class="story reveal">
+    <span class="chip">Öykü · {formatted}</span>
+    <h3 class="story__title display">{story.data.title}</h3>
+    <p class="story__excerpt">{story.data.excerpt}</p>
+    <span class="story__more">Okumaya başla →</span>
 </a>
+
+<style>
+    .story {
+        display: flex;
+        flex-direction: column;
+        gap: 0.85rem;
+        padding: clamp(1.75rem, 3vw, 2.5rem);
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        text-decoration: none;
+        color: var(--ink);
+        transition:
+            transform 0.25s ease,
+            box-shadow 0.25s ease;
+    }
+    .story:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 26px 55px -28px rgba(16, 52, 58, 0.55);
+    }
+    .story__title {
+        font-size: clamp(1.9rem, 3.5vw, 2.6rem);
+        margin: 0;
+    }
+    .story__excerpt {
+        font-size: 1rem;
+        line-height: 1.7;
+        color: var(--ink-soft);
+        margin: 0;
+    }
+    .story__more {
+        margin-top: 0.35rem;
+        font-family: var(--font-gotu);
+        font-size: 0.78rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--teal);
+    }
+</style>

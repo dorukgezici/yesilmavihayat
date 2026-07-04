@@ -1,8 +1,9 @@
 ---
+import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
 import coverImg from "../assets/img/cover.webp";
+import meltemImg from "../assets/img/meltem.jpg";
 import img1 from "../assets/img/home/1.jpg";
-import img10 from "../assets/img/home/10.jpg";
 import img2 from "../assets/img/home/2.jpg";
 import img3 from "../assets/img/home/3.jpg";
 import img4 from "../assets/img/home/4.jpg";
@@ -11,84 +12,939 @@ import img6 from "../assets/img/home/6.jpg";
 import img7 from "../assets/img/home/7.jpg";
 import img8 from "../assets/img/home/8.jpg";
 import img9 from "../assets/img/home/9.jpg";
-import meltemImg from "../assets/img/meltem.jpg";
-import Carousel from "../components/Carousel.astro";
+import img10 from "../assets/img/home/10.jpg";
 import Layout from "../layouts/Layout.astro";
 
-const imgs = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10];
+const gallery = [img2, img8, img5, img1, img10, img4, img7, img3, img6, img9];
+
+// Honest, real media proof — pulled from the news collection itself.
+const news = await getCollection("news");
+const outlets = [...new Set(news.map((n) => n.data.source.trim()))]
+    .filter((s) => !s.startsWith("http"))
+    .sort((a, b) => a.localeCompare(b, "tr"));
+
+const buyTR = "https://destekdukkan.com/magaza/urun/yesil-mavi-hayat";
+const buyEU =
+    "https://www.tikla24.de/kitap/meltem-soguk-stropoli/yesil-mavi-hayat-ve-50-yas/";
+
+const description =
+    "Meltem Soğuk Stropoli’nin ilk kitabı Yeşil Mavi Hayat: hızlı bir dünyada yavaşlamaya ve doğanın bir parçası olarak yaşamaya davet eden bir kitap.";
+
+const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Book",
+    name: "Yeşil Mavi Hayat",
+    alternateName: "Yeşil Mavi Hayat ve 50 yaş",
+    inLanguage: "tr",
+    bookFormat: "https://schema.org/Paperback",
+    datePublished: "2023-08",
+    publisher: { "@type": "Organization", name: "Destek Yayınları" },
+    author: {
+        "@type": "Person",
+        name: "Meltem Soğuk Stropoli",
+        jobTitle: "Yazar, Sağlık Koçu",
+    },
+    image: new URL(coverImg.src, Astro.site).toString(),
+    url: Astro.site?.toString(),
+    offers: {
+        "@type": "Offer",
+        availability: "https://schema.org/InStock",
+        url: buyTR,
+    },
+};
 ---
 
-<Layout title="Yeşil Mavi Hayat | Meltem Soğuk Stropoli">
-  <main class="flex flex-col items-center justify-between space-y-8">
-    <section class="items-center">
-      <Carousel imgs={imgs} />
-    </section>
+<Layout
+    title="Yeşil Mavi Hayat | Meltem Soğuk Stropoli"
+    description={description}
+>
+    <Fragment slot="head">
+        <script
+            type="application/ld+json"
+            is:inline
+            set:html={JSON.stringify(jsonLd)}
+        />
+    </Fragment>
 
-    <section class="flex flex-wrap items-center justify-center">
-      <div class="flex w-auto m-8">
-        <Image src={coverImg} alt="Yeşil Mavi Hayat" width={256} height={403} />
-      </div>
-      <div class="w-5/6 prose">
-        <p>
-          Günümüzün modern dünyasında çoğumuz hedef odaklı, hızlı, oldukça da bireyselleşmiş hayatlar yaşıyoruz.
-          Yaşamdaki “anlam”, genellikle başarı ve toplumsal statü ile ilişkilendirilirken, insanı insan yapan erdemler
-          ise burun kıvrılan demode değerler haline geldiler.
-        </p>
-        <p>
-          Büyük resmi kaybetmeden “gerçek kendimiz”i keşfedebilmek, sadece bireysel hırs ve tüketme odaklı bir şekilde
-          bencilce yaşamamak, doğanın sahibi değil de onun bir parçası olduğumuzu unutmamak, “ben-öteki”, “insan-doğa”,
-          “insan-hayvan” tarzında ayrımları törpüleyebilmek gibi kavramlar üzerine düşündürücü bir yapıt...
-        </p>
-        <p>Tüm kitapçılarda!</p>
-        <div class="flex flex-wrap gap-2">
-          <a
-            href="https://destekdukkan.com/magaza/urun/yesil-mavi-hayat"
-            target="_blank"
-            class="btn btn-block md:w-auto"
-          >
-            destekdukkan.com
-            <div class="badge">%40 İNDİRİM</div>
-          </a>
-          <a
-            href="https://www.tikla24.de/kitap/meltem-soguk-stropoli/yesil-mavi-hayat-ve-50-yas/"
-            target="_blank"
-            class="btn btn-block md:w-auto"
-          >
-            tikla24.de
-            <div class="badge">Avrupa</div>
-          </a>
-        </div>
-      </div>
-    </section>
+    <main>
+        <!-- ░░ HERO ░░ -->
+        <section class="hero">
+            <span class="blob blob--gold" aria-hidden="true"></span>
+            <span class="blob blob--teal" aria-hidden="true"></span>
 
-    <section class="flex flex-wrap flex-row-reverse items-center justify-center">
-      <div class="flex w-auto m-8">
-        <Image src={meltemImg} alt="Meltem Soğuk Stropoli" class="rounded-2xl" width={333} height={500} />
-      </div>
-      <div class="w-5/6 prose">
-        <h2>Yazar Hakkında</h2>
-        <p>
-          1972 yılının Nisan ayında İstanbul’da dünyaya geldi. Kadıköy Anadolu Lisesi ve İstanbul Üniversitesi Eczacılık
-          Fakültesi’nin ardından İlaç Endüstrisi’nde pazarlama alanında toplam on sekiz yıl boyunca Türkiye, İsviçre ve
-          İrlanda’da yöneticilik görevlerinde bulunan{" "}
-          <b>Meltem Soğuk Stropoli</b>, ek olarak da altı yıl sahibi olduğu kreatif ajansın iki kurucu ortağından biri
-          olarak yöneticilik görevini yürüttü.
-        </p>
-        <p>
-          Uzun yıllar kurumsal hayatta –kendi tanımıyla– büyüme odaklı, öğütücü bir düzenin parçası olarak yer aldıktan
-          sonra hayatının akışına farklı bir yön vermek istedi ve 2020 yılında yaşanan pandemi sırasında kurumsal hayatı
-          bırakma kararı aldı. 2021 yılında, merkezi New York’ta bulunan Institute for Integrative Nutrition’da Bütünsel
-          Beslenme Danışmanlığı ve Sağlık Koçluğu eğitimini tamamladı. Hayatta hiçbir yaşın öğrenmek ve kendini
-          geliştirmek için geç olmadığına inanan Soğuk Stropoli, öğrenme hevesinin artarak devam ettiği bilinçli, iyi ve
-          sağlıklı yaşama yolculuğuna 2022 yılında, merkezi Chicago’da bulunan Functional Medicine Coaching Academy’de
-          Fonksiyonel Tıp Sağlık Koçluğu eğitimi ile devam etti.
-        </p>
-        <p>
-          2013 yılında İtalyan olan eşi ile evlenip İsviçre’ye taşınan yazar, bu süre içinde iki yıl Dublin’de
-          yaşadıktan sonra 2022 yılında tekrar İsviçre’ye döndü. Şu anda hayatını eşi ve köpeğiyle birlikte İsviçre’de
-          sürdürmekte ve bireysel Sağlık Koçluğu yapmaktadır.
-        </p>
-      </div>
-    </section>
-  </main>
+            <div class="hero__grid">
+                <div class="hero__copy enter">
+                    <p class="kicker">Meltem Soğuk Stropoli</p>
+                    <h1 class="display title"><span>Yeşil Mavi</span> Hayat</h1>
+                    <p class="title__sub">ve 50 yaş…</p>
+                    <p class="lede">
+                        Başarı ve statüyle ölçülen hızlı bir dünyada;
+                        yavaşlamaya, gerçek kendini hatırlamaya ve doğanın bir
+                        parçası olarak yaşamaya davet eden bir kitap.
+                    </p>
+                    <div class="hero__cta">
+                        <a
+                            href={buyTR}
+                            target="_blank"
+                            rel="noopener"
+                            class="btn-solid"
+                        >
+                            Kitabı Edin
+                            <span class="tag">%40 indirim</span>
+                        </a>
+                        <a href="#kitap" class="btn-ghost">Kitap Hakkında</a>
+                    </div>
+                    <p class="hero__meta">
+                        Destek Yayınları · 2023 · Tüm kitapçılarda
+                    </p>
+                </div>
+
+                <div class="hero__book enter enter--2">
+                    <span class="hero__book-glow" aria-hidden="true"></span>
+                    <Image
+                        src={coverImg}
+                        alt="Yeşil Mavi Hayat kitabının kapağı, sulu boya bir figür"
+                        width={340}
+                        height={536}
+                        loading="eager"
+                        fetchpriority="high"
+                        class="hero__cover"
+                    />
+                </div>
+            </div>
+
+            <a href="#kitap" class="scroll-cue" aria-label="Aşağı kaydır">
+                <span></span>
+            </a>
+        </section>
+
+        <!-- ░░ PHILOSOPHY ░░ -->
+        <section id="kitap" class="paper section">
+            <div class="wrap wrap--narrow">
+                <p class="kicker kicker--center reveal">Kitap Hakkında</p>
+                <h2 class="display h2 reveal">Daha anlamlı bir hayata doğru</h2>
+                <div class="prose-block">
+                    <p class="reveal">
+                        Günümüzün modern dünyasında çoğumuz hedef odaklı, hızlı,
+                        oldukça da bireyselleşmiş hayatlar yaşıyoruz. Yaşamdaki
+                        “anlam”, genellikle başarı ve toplumsal statü ile
+                        ilişkilendirilirken, insanı insan yapan erdemler ise
+                        burun kıvrılan demode değerler haline geldiler.
+                    </p>
+                    <p class="reveal">
+                        Büyük resmi kaybetmeden “gerçek kendimiz”i
+                        keşfedebilmek, sadece bireysel hırs ve tüketme odaklı
+                        bir şekilde bencilce yaşamamak, doğanın sahibi değil de
+                        onun bir parçası olduğumuzu unutmamak, “ben-öteki”,
+                        “insan-doğa”, “insan-hayvan” tarzında ayrımları
+                        törpüleyebilmek gibi kavramlar üzerine düşündürücü bir
+                        yapıt…
+                    </p>
+                </div>
+
+                <ol class="themes">
+                    <li class="reveal">
+                        <span class="themes__no">01</span>
+                        <h3>Gerçek kendini keşfet</h3>
+                        <p>
+                            Büyük resmi kaybetmeden, statünün ötesinde “gerçek
+                            kendini” hatırla.
+                        </p>
+                    </li>
+                    <li class="reveal">
+                        <span class="themes__no">02</span>
+                        <h3>Sadeleş</h3>
+                        <p>
+                            Bireysel hırs ve tüketme odaklı yaşamın dışına bir
+                            adım at.
+                        </p>
+                    </li>
+                    <li class="reveal">
+                        <span class="themes__no">03</span>
+                        <h3>Doğanın parçası ol</h3>
+                        <p>
+                            “Ben-öteki”, “insan-doğa”, “insan-hayvan”
+                            ayrımlarını törpüle.
+                        </p>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- ░░ NATURE QUOTE BAND ░░ -->
+        <section class="quote-band" aria-label="Kitaptan bir alıntı">
+            <Image
+                src={img8}
+                alt="Bir dağ gölü kıyısında, sırtı dönük oturarak manzarayı izleyen bir kişi"
+                width={1600}
+                height={2133}
+                loading="lazy"
+                class="quote-band__bg"
+            />
+            <div class="quote-band__scrim" aria-hidden="true"></div>
+            <blockquote class="quote-band__text reveal">
+                <p class="display">
+                    Doğanın sahibi değil,<br />bir parçasıyız.
+                </p>
+                <cite>Yeşil Mavi Hayat</cite>
+            </blockquote>
+        </section>
+
+        <!-- ░░ GALLERY ░░ -->
+        <section class="section section--tight gallery-sec">
+            <div class="wrap gallery-sec__head">
+                <p class="kicker reveal">Yeşil, mavi bir hayattan kareler</p>
+                <p class="gallery-sec__note reveal">
+                    Yazarın kendi objektifinden.
+                </p>
+            </div>
+            <div
+                class="marquee"
+                role="group"
+                aria-label="Doğa fotoğrafları galerisi"
+            >
+                <ul class="marquee__track">
+                    {
+                        [...gallery, ...gallery].map((img, i) => (
+                            <li>
+                                <Image
+                                    src={img}
+                                    alt="Yeşil Mavi Hayat, doğadan bir kare"
+                                    width={300}
+                                    height={400}
+                                    loading="lazy"
+                                    aria-hidden={
+                                        i >= gallery.length ? "true" : undefined
+                                    }
+                                />
+                            </li>
+                        ))
+                    }
+                </ul>
+            </div>
+        </section>
+
+        <!-- ░░ AUTHOR ░░ -->
+        <section id="yazar" class="paper section">
+            <div class="wrap author">
+                <div class="author__portrait reveal">
+                    <Image
+                        src={meltemImg}
+                        alt="Yazar Meltem Soğuk Stropoli’nin siyah-beyaz portresi"
+                        width={440}
+                        height={660}
+                        loading="lazy"
+                    />
+                </div>
+                <div class="author__body">
+                    <p class="kicker reveal">Yazar Hakkında</p>
+                    <h2 class="display h2 reveal">Meltem Soğuk Stropoli</h2>
+                    <p class="author__lead reveal">
+                        Eczacı, kurumsal yönetici, sağlık koçu ve şimdi yazar.
+                    </p>
+                    <div class="prose-block reveal">
+                        <p>
+                            1972 yılının Nisan ayında İstanbul’da dünyaya geldi.
+                            Kadıköy Anadolu Lisesi ve İstanbul Üniversitesi
+                            Eczacılık Fakültesi’nin ardından İlaç Endüstrisi’nde
+                            pazarlama alanında toplam on sekiz yıl boyunca
+                            Türkiye, İsviçre ve İrlanda’da yöneticilik
+                            görevlerinde bulundu; ek olarak da altı yıl sahibi
+                            olduğu kreatif ajansın iki kurucu ortağından biri
+                            olarak yöneticilik yaptı.
+                        </p>
+                        <p>
+                            Uzun yıllar kurumsal hayatta (kendi tanımıyla)
+                            büyüme odaklı, öğütücü bir düzenin parçası olduktan
+                            sonra hayatına farklı bir yön vermek istedi ve 2020
+                            yılında, pandemi sırasında kurumsal hayatı bırakma
+                            kararı aldı. 2021’de New York merkezli Institute for
+                            Integrative Nutrition’da Bütünsel Beslenme
+                            Danışmanlığı ve Sağlık Koçluğu, 2022’de Chicago
+                            merkezli Functional Medicine Coaching Academy’de
+                            Fonksiyonel Tıp Sağlık Koçluğu eğitimlerini
+                            tamamladı.
+                        </p>
+                        <p>
+                            2013 yılında İtalyan olan eşiyle evlenip İsviçre’ye
+                            taşındı; bu süreçte iki yıl Dublin’de yaşadıktan
+                            sonra 2022’de yeniden İsviçre’ye döndü. Şu anda
+                            hayatını eşi ve köpeğiyle birlikte İsviçre’de
+                            sürdürmekte ve bireysel Sağlık Koçluğu yapmaktadır.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ░░ MEDIA ░░ -->
+        <section id="medya" class="section section--tight media">
+            <div class="wrap wrap--narrow media__head">
+                <p class="kicker kicker--center reveal">Medyada</p>
+                <h2 class="display h2 reveal">
+                    Basında ve radyoda Yeşil Mavi Hayat
+                </h2>
+            </div>
+            <div
+                class="marquee marquee--slow"
+                role="group"
+                aria-label="Kitabın yer aldığı yayınlar"
+            >
+                <ul class="marquee__track marquee__track--text">
+                    {
+                        [...outlets, ...outlets].map((name, i) => (
+                            <li
+                                aria-hidden={
+                                    i >= outlets.length ? "true" : undefined
+                                }
+                            >
+                                {name}
+                            </li>
+                        ))
+                    }
+                </ul>
+            </div>
+            <div class="wrap media__cta reveal">
+                <a href="/medya" class="btn-ghost"
+                    >Tüm haberler ve röportajlar →</a
+                >
+            </div>
+        </section>
+
+        <!-- ░░ FINAL CTA ░░ -->
+        <section id="satinal" class="paper section closing">
+            <div class="wrap wrap--narrow">
+                <p class="kicker kicker--center reveal">Kitabı Edinin</p>
+                <h2 class="display closing__title reveal">
+                    Yolculuğa başlayın
+                </h2>
+                <p class="closing__lede reveal">
+                    Yeşil Mavi Hayat, tüm kitapçılarda. Dilediğiniz yerden
+                    edinebilirsiniz.
+                </p>
+
+                <div class="paths">
+                    <a
+                        href={buyTR}
+                        target="_blank"
+                        rel="noopener"
+                        class="path path--primary reveal"
+                    >
+                        <span class="path__region">Türkiye</span>
+                        <span class="path__name">destekdukkan.com</span>
+                        <span class="path__desc"
+                            >Destek Yayınları resmî mağazası</span
+                        >
+                        <span class="path__badge">%40 indirim</span>
+                        <span class="path__go">Satın al →</span>
+                    </a>
+                    <a
+                        href={buyEU}
+                        target="_blank"
+                        rel="noopener"
+                        class="path reveal"
+                    >
+                        <span class="path__region">Avrupa</span>
+                        <span class="path__name">tikla24.de</span>
+                        <span class="path__desc">Avrupa’dan hızlı teslimat</span
+                        >
+                        <span class="path__badge path__badge--soft">Avrupa</span
+                        >
+                        <span class="path__go">Satın al →</span>
+                    </a>
+                </div>
+
+                <nav class="explore reveal" aria-label="Sitede keşfet">
+                    <a href="/yorumlar">Sizden Gelenler</a>
+                    <a href="/oykuler">Öykülerim</a>
+                    <a href="/okuma-listesi">Okuma Listesi</a>
+                </nav>
+            </div>
+        </section>
+    </main>
 </Layout>
+
+<style>
+    /* Shared tokens, type, layout, buttons + scroll-reveal live in global.css.
+     Below are the styles specific to the landing page. */
+
+    /* ─ Hero ─ */
+    .hero {
+        position: relative;
+        isolation: isolate;
+        padding: clamp(2rem, 6vw, 4rem) 1.5rem clamp(4rem, 8vw, 6rem);
+        background:
+            radial-gradient(120% 90% at 85% 8%, #cdeae6 0%, transparent 55%),
+            radial-gradient(120% 100% at 5% 100%, #d9efe0 0%, transparent 50%),
+            linear-gradient(180deg, var(--aqua) 0%, #cbe7e2 100%);
+        overflow: hidden;
+    }
+    .hero__grid {
+        max-width: 72rem;
+        margin-inline: auto;
+        min-height: min(78vh, 720px);
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        align-items: center;
+        gap: clamp(2rem, 5vw, 5rem);
+    }
+    .hero__copy {
+        max-width: 34rem;
+    }
+    .title {
+        font-size: clamp(3.2rem, 7vw, 5.6rem);
+        margin: 0;
+        color: var(--ink);
+    }
+    .title span {
+        display: block;
+    }
+    .title__sub {
+        font-family: var(--font-gotu);
+        font-size: clamp(1rem, 2.4vw, 1.35rem);
+        letter-spacing: 0.12em;
+        color: var(--teal);
+        margin: 0.85rem 0 1.6rem;
+    }
+    .lede {
+        font-size: clamp(1.15rem, 1.9vw, 1.4rem);
+        line-height: 1.6;
+        color: var(--ink-soft);
+        margin: 0 0 2rem;
+    }
+    .hero__cta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.9rem;
+        align-items: center;
+    }
+    .hero__meta {
+        margin: 1.8rem 0 0;
+        font-size: 0.82rem;
+        letter-spacing: 0.06em;
+        color: var(--ink-soft);
+    }
+
+    .hero__book {
+        position: relative;
+        display: flex;
+        justify-content: center;
+    }
+    .hero__cover {
+        position: relative;
+        z-index: 1;
+        width: clamp(230px, 32vw, 340px);
+        height: auto;
+        border-radius: 4px;
+        filter: drop-shadow(0 40px 55px rgba(16, 52, 58, 0.35));
+        will-change: transform;
+    }
+    .hero__book-glow {
+        position: absolute;
+        inset: -12% -6% -6%;
+        z-index: 0;
+        background: radial-gradient(
+            50% 50% at 50% 45%,
+            rgba(255, 255, 255, 0.75) 0%,
+            rgba(255, 255, 255, 0) 70%
+        );
+    }
+
+    .blob {
+        position: absolute;
+        z-index: 0;
+        border-radius: 50%;
+        filter: blur(60px);
+        opacity: 0.55;
+        pointer-events: none;
+    }
+    .blob--gold {
+        width: 32vw;
+        height: 32vw;
+        max-width: 380px;
+        max-height: 380px;
+        top: -6%;
+        right: 6%;
+        background: radial-gradient(
+            circle,
+            rgba(233, 185, 73, 0.5),
+            transparent 70%
+        );
+    }
+    .blob--teal {
+        width: 30vw;
+        height: 30vw;
+        max-width: 340px;
+        max-height: 340px;
+        bottom: -8%;
+        left: -4%;
+        background: radial-gradient(
+            circle,
+            rgba(14, 124, 123, 0.35),
+            transparent 70%
+        );
+    }
+
+    .scroll-cue {
+        position: absolute;
+        left: 50%;
+        bottom: 1.4rem;
+        translate: -50% 0;
+        width: 24px;
+        height: 38px;
+        border: 1.5px solid color-mix(in srgb, var(--ink) 45%, transparent);
+        border-radius: 999px;
+        display: flex;
+        justify-content: center;
+        padding-top: 7px;
+        z-index: 2;
+    }
+    .scroll-cue span {
+        width: 3px;
+        height: 8px;
+        border-radius: 999px;
+        background: var(--ink);
+    }
+
+    /* ─ Themes ─ */
+    .themes {
+        list-style: none;
+        margin: clamp(2.5rem, 5vw, 4rem) 0 0;
+        padding: 0;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+    }
+    .themes li {
+        padding-top: 1.4rem;
+        border-top: 1px solid var(--line);
+    }
+    .themes__no {
+        font-family: var(--font-gotu);
+        font-size: 0.8rem;
+        letter-spacing: 0.1em;
+        color: var(--gold);
+    }
+    .themes h3 {
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin: 0.5rem 0 0.5rem;
+        color: var(--ink);
+    }
+    .themes p {
+        font-size: 0.98rem;
+        line-height: 1.6;
+        color: var(--ink-soft);
+        margin: 0;
+    }
+
+    /* ─ Quote band ─ */
+    .quote-band {
+        position: relative;
+        isolation: isolate;
+        min-height: min(85vh, 680px);
+        display: grid;
+        place-items: center;
+        padding: 4rem 1.5rem;
+        overflow: hidden;
+    }
+    .quote-band__bg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -2;
+        transform: scale(1.05);
+    }
+    .quote-band__scrim {
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background: linear-gradient(
+            180deg,
+            rgba(16, 52, 58, 0.35) 0%,
+            rgba(16, 52, 58, 0.55) 100%
+        );
+    }
+    .quote-band__text {
+        text-align: center;
+        color: #fff;
+        max-width: 40rem;
+    }
+    .quote-band__text p {
+        font-size: clamp(2.6rem, 7vw, 5rem);
+        margin: 0;
+        text-shadow: 0 2px 30px rgba(0, 0, 0, 0.35);
+    }
+    .quote-band__text cite {
+        display: block;
+        margin-top: 1.5rem;
+        font-family: var(--font-gotu);
+        font-style: normal;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        font-size: 0.78rem;
+        opacity: 0.9;
+    }
+
+    /* ─ Gallery ─ */
+    .gallery-sec__head {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 0.5rem;
+        padding-inline: 1.5rem;
+        margin-bottom: 2rem;
+    }
+    .gallery-sec__head .kicker {
+        margin: 0;
+        color: var(--ink);
+    }
+    .gallery-sec__note {
+        font-size: 0.9rem;
+        color: var(--ink-soft);
+        margin: 0;
+    }
+    .marquee {
+        overflow-x: auto;
+        scrollbar-width: none;
+        -webkit-mask-image: linear-gradient(
+            90deg,
+            transparent,
+            #000 5%,
+            #000 95%,
+            transparent
+        );
+        mask-image: linear-gradient(
+            90deg,
+            transparent,
+            #000 5%,
+            #000 95%,
+            transparent
+        );
+    }
+    .marquee::-webkit-scrollbar {
+        display: none;
+    }
+    .marquee__track {
+        list-style: none;
+        display: flex;
+        gap: 1.25rem;
+        padding: 0.5rem 1.5rem;
+        margin: 0;
+        width: max-content;
+    }
+    .marquee__track li {
+        flex: none;
+    }
+    .marquee__track img {
+        width: clamp(200px, 24vw, 280px);
+        height: clamp(280px, 32vw, 380px);
+        object-fit: cover;
+        border-radius: 14px;
+        box-shadow: 0 16px 40px -20px rgba(16, 52, 58, 0.5);
+    }
+
+    .marquee--slow .marquee__track--text {
+        align-items: center;
+        gap: 0;
+        padding-block: 0;
+    }
+    .marquee__track--text li {
+        font-family: var(--font-gotu);
+        font-size: clamp(1.1rem, 2.2vw, 1.6rem);
+        color: var(--ink);
+        padding-inline: 1.75rem;
+        position: relative;
+        white-space: nowrap;
+        opacity: 0.85;
+    }
+    .marquee__track--text li::after {
+        content: "·";
+        position: absolute;
+        right: -0.2rem;
+        color: var(--gold);
+    }
+    .media__head {
+        margin-bottom: 2.5rem;
+    }
+    .media__cta {
+        text-align: center;
+        margin-top: 2.5rem;
+    }
+
+    /* ─ Author ─ */
+    .author {
+        display: grid;
+        grid-template-columns: 0.85fr 1.15fr;
+        gap: clamp(2rem, 5vw, 4.5rem);
+        align-items: center;
+    }
+    .author__portrait img {
+        width: 100%;
+        height: auto;
+        border-radius: 18px;
+        box-shadow: 0 30px 60px -30px rgba(16, 52, 58, 0.7);
+    }
+    .author__lead {
+        font-family: var(--font-charmonman);
+        font-weight: 700;
+        font-size: clamp(1.5rem, 3vw, 2rem);
+        color: var(--teal);
+        line-height: 1.2;
+        margin: 0 0 1.6rem;
+    }
+
+    /* ─ Closing ─ */
+    .closing {
+        text-align: center;
+    }
+    .closing__title {
+        font-size: clamp(2.8rem, 8vw, 5rem);
+        margin: 0 0 1rem;
+    }
+    .closing__lede {
+        font-size: 1.15rem;
+        color: var(--ink-soft);
+        max-width: 32rem;
+        margin: 0 auto clamp(2.5rem, 5vw, 3.5rem);
+    }
+    .paths {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.25rem;
+        text-align: left;
+    }
+    .path {
+        position: relative;
+        display: grid;
+        gap: 0.35rem;
+        padding: 1.6rem 1.6rem 1.4rem;
+        border-radius: 18px;
+        background: #fff;
+        border: 1px solid var(--line);
+        text-decoration: none;
+        color: var(--ink);
+        transition:
+            transform 0.2s ease,
+            box-shadow 0.2s ease,
+            border-color 0.2s ease;
+    }
+    .path:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 24px 50px -26px rgba(16, 52, 58, 0.55);
+        border-color: transparent;
+    }
+    .path--primary {
+        background: var(--ink);
+        color: var(--paper);
+        border-color: transparent;
+    }
+    .path__region {
+        font-family: var(--font-gotu);
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        font-size: 0.7rem;
+        color: var(--teal);
+    }
+    .path--primary .path__region {
+        color: #8fd6cf;
+    }
+    .path__name {
+        font-size: 1.5rem;
+        font-weight: 700;
+    }
+    .path__desc {
+        font-size: 0.92rem;
+        color: var(--ink-soft);
+    }
+    .path--primary .path__desc {
+        color: color-mix(in srgb, var(--paper) 78%, transparent);
+    }
+    .path__badge {
+        justify-self: start;
+        margin-top: 0.5rem;
+        background: var(--gold);
+        color: #3a2a06;
+        font-size: 0.72rem;
+        font-weight: 700;
+        padding: 0.25rem 0.6rem;
+        border-radius: 999px;
+    }
+    .path__badge--soft {
+        background: color-mix(in srgb, var(--teal) 16%, transparent);
+        color: var(--teal);
+    }
+    .path__go {
+        margin-top: 0.6rem;
+        font-weight: 600;
+        font-size: 0.95rem;
+    }
+    .explore {
+        margin-top: clamp(2.5rem, 5vw, 3.5rem);
+        padding-top: 1.75rem;
+        border-top: 1px solid var(--line);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.75rem;
+    }
+    .explore a {
+        font-family: var(--font-gotu);
+        font-size: 0.82rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--ink-soft);
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+    .explore a:hover {
+        color: var(--teal);
+    }
+
+    /* ─ Responsive ─ */
+    @media (max-width: 860px) {
+        .hero__grid {
+            grid-template-columns: 1fr;
+            text-align: center;
+            min-height: 0;
+            gap: 2.5rem;
+        }
+        .hero__copy {
+            order: 2;
+            margin-inline: auto;
+        }
+        .hero__book {
+            order: 1;
+        }
+        .hero__cta {
+            justify-content: center;
+        }
+        .themes {
+            grid-template-columns: 1fr;
+            gap: 0;
+        }
+        .themes li {
+            padding-block: 1.25rem;
+        }
+        .author {
+            grid-template-columns: 1fr;
+            text-align: center;
+        }
+        .author__portrait {
+            max-width: 300px;
+            margin-inline: auto;
+        }
+        .author__lead {
+            margin-inline: auto;
+        }
+        .paths {
+            grid-template-columns: 1fr;
+        }
+        .scroll-cue {
+            display: none;
+        }
+    }
+
+    /* ─ Motion (screen only — print/crawlers always see content) ─ */
+    @media screen and (prefers-reduced-motion: no-preference) {
+        /* Hero entrance is pure CSS — never depends on JS (protects LCP). */
+        .enter {
+            animation: heroIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+        }
+        .enter--2 {
+            animation-delay: 0.18s;
+        }
+
+        .hero__cover {
+            animation: breathe 7s ease-in-out infinite;
+        }
+        .blob--gold {
+            animation: drift 18s ease-in-out infinite;
+        }
+        .blob--teal {
+            animation: drift 22s ease-in-out infinite reverse;
+        }
+        .quote-band__bg {
+            animation: kenburns 20s ease-in-out infinite alternate;
+        }
+        .marquee__track {
+            animation: marquee 60s linear infinite;
+            width: max-content;
+        }
+        .marquee:hover .marquee__track {
+            animation-play-state: paused;
+        }
+        .marquee--slow .marquee__track {
+            animation-duration: 45s;
+        }
+        .scroll-cue span {
+            animation: nudge 1.8s ease-in-out infinite;
+        }
+    }
+
+    /* When motion is on, the marquee is animated, not manually scrolled. */
+    @media screen and (prefers-reduced-motion: no-preference) {
+        .marquee {
+            overflow: hidden;
+        }
+    }
+
+    @keyframes heroIn {
+        from {
+            opacity: 0;
+            transform: translateY(24px);
+        }
+        to {
+            opacity: 1;
+            transform: none;
+        }
+    }
+    @keyframes breathe {
+        0%,
+        100% {
+            transform: translateY(0) rotate(-0.4deg);
+        }
+        50% {
+            transform: translateY(-14px) rotate(0.4deg);
+        }
+    }
+    @keyframes drift {
+        0%,
+        100% {
+            transform: translate(0, 0);
+        }
+        50% {
+            transform: translate(18px, -22px);
+        }
+    }
+    @keyframes kenburns {
+        from {
+            transform: scale(1.05);
+        }
+        to {
+            transform: scale(1.16) translateY(-2%);
+        }
+    }
+    @keyframes marquee {
+        from {
+            transform: translateX(0);
+        }
+        to {
+            transform: translateX(-50%);
+        }
+    }
+    @keyframes nudge {
+        0%,
+        100% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        50% {
+            transform: translateY(9px);
+            opacity: 0.3;
+        }
+    }
+</style>

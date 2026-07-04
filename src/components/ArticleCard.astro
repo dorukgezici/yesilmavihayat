@@ -6,28 +6,86 @@ interface Props {
 }
 
 const { article } = Astro.props;
+const { url, img, date, title, source } = article.data;
+const formatted = new Date(date).toLocaleDateString("tr", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+});
 ---
 
-<a href={article.data.url} target="_blank" class="no-underline not-prose">
-    <div class="card w-96 bg-base-200 shadow-xl">
-        <figure>
-            <img
-                src={article.data.img}
-                alt={article.data.title}
-                class="object-cover h-62.5 w-[384px]"
-                height={250}
-                width={384}
-            />
-        </figure>
-        <div class="card-body prose">
-            <h2 class="card-title">{article.data.title}</h2>
-            <p>{article.body}</p>
-            <div class="card-actions justify-end mt-4">
-                <div class="badge badge-outline">#{article.data.source}</div>
-                <div class="badge badge-outline">
-                    {new Date(article.data.date).toLocaleDateString("tr")}
-                </div>
-            </div>
-        </div>
+<a href={url} target="_blank" rel="noopener" class="art reveal">
+    <div class="art__media">
+        <img src={img} alt={title} loading="lazy" width="480" height="300" />
+    </div>
+    <div class="art__body">
+        <span class="chip">{source}</span>
+        <h3 class="art__title">{title}</h3>
+        <p class="art__excerpt">{article.body}</p>
+        <span class="art__date">{formatted}</span>
     </div>
 </a>
+
+<style>
+    .art {
+        display: flex;
+        flex-direction: column;
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        overflow: hidden;
+        text-decoration: none;
+        color: var(--ink);
+        transition:
+            transform 0.25s ease,
+            box-shadow 0.25s ease;
+    }
+    .art:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 24px 50px -26px rgba(16, 52, 58, 0.5);
+    }
+    .art__media {
+        aspect-ratio: 16 / 10;
+        background: var(--aqua-2);
+        overflow: hidden;
+    }
+    .art__media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+    }
+    .art:hover .art__media img {
+        transform: scale(1.04);
+    }
+    .art__body {
+        padding: 1.25rem 1.4rem 1.4rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.55rem;
+        flex: 1;
+    }
+    .art__title {
+        font-size: 1.12rem;
+        font-weight: 700;
+        line-height: 1.35;
+        margin: 0;
+    }
+    .art__excerpt {
+        font-size: 0.92rem;
+        line-height: 1.6;
+        color: var(--ink-soft);
+        margin: 0;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    .art__date {
+        margin-top: auto;
+        padding-top: 0.35rem;
+        font-size: 0.78rem;
+        color: var(--ink-soft);
+        letter-spacing: 0.02em;
+    }
+</style>
