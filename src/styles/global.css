@@ -1,0 +1,54 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@plugin "daisyui" {
+  themes: yesilmavihayat --default;
+}
+@plugin "daisyui/theme" {
+  name: "yesilmavihayat";
+  default: true;
+  color-scheme: light;
+
+  --color-base-100: rgb(186, 223, 222);
+  --color-base-200: rgb(166, 207, 206);
+  --color-base-300: rgb(146, 191, 190);
+  --color-base-content: #1e293b;
+
+  --color-primary: rgb(127, 193, 198);
+  --color-primary-content: #1e293b;
+
+  --color-secondary: #fef08a;
+  --color-secondary-content: #1e293b;
+
+  --color-accent: #14b8a6;
+  --color-accent-content: #ffffff;
+
+  --color-neutral: #374151;
+  --color-neutral-content: #ffffff;
+
+  --color-info: #3abff8;
+  --color-info-content: #1e293b;
+
+  --color-success: #36d399;
+  --color-success-content: #1e293b;
+
+  --color-warning: #fbbd23;
+  --color-warning-content: #1e293b;
+
+  --color-error: #f87272;
+  --color-error-content: #1e293b;
+
+  --radius-selector: 0.5rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.5rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
+
+@theme {
+  --font-sans: "InterVariable", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-charmonman: "Charmonman", ui-sans-serif, system-ui, sans-serif;
+  --font-gotu: "Gotu", ui-sans-serif, system-ui, sans-serif;
+}
