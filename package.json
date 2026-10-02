@@ -20,8 +20,8 @@
     "@tailwindcss/typography": "^0.5.20",
     "@tailwindcss/vite": "^4.3.3",
     "astro": "^7.3.5",
-    "astro-decap-cms-oauth": "^0.5.2",
-    "daisyui": "^5.7.46",
+    "astro-decap-cms-oauth": "^0.6.0",
+    "daisyui": "^5.7.47",
     "sharp": "^0.35.5",
     "tailwindcss": "^4.3.3"
   },
